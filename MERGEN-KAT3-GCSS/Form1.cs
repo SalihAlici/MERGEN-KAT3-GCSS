@@ -15,6 +15,6 @@ namespace MERGEN_KAT3_GCSS
         public Form1()
         {
             InitializeComponent();
-        }
+        } 
     }
 }

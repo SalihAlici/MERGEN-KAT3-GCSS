@@ -34,6 +34,8 @@ namespace MERGEN_KAT3_GCSS
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
+          
             map.InitializeMap();
         }
     }

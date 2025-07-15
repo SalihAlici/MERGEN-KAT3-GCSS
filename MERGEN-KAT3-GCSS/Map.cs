@@ -7,14 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MERGEN_KAT3_GCSS
 {
     public class Map
     {
         private GMapControl gMapControl;
-        private GMapMarker marker;
-        private GMapOverlay markers;
+
+        private GMapOverlay markersOverlay;
+        private GMapOverlay routesOverlay;
+
+        private GMapMarker currentPositionMarker;
+
+        private List<PointLatLng> routePoints = new List<PointLatLng>();
 
         private double lastLat = 0;
         private double lastLng = 0;
@@ -34,13 +40,17 @@ namespace MERGEN_KAT3_GCSS
             gMapControl.Zoom = 16;
             gMapControl.ShowCenter = false;
 
-            // Marker ve overlay'ı sadece bir kere oluştur
-            markers = new GMapOverlay("markers");
-            marker = new GMarkerGoogle(gMapControl.Position, GMarkerGoogleType.red_dot);
-            markers.Markers.Add(marker);
-            gMapControl.Overlays.Add(markers);
-        }
+            // Marker ve rota için ayrı overlay'lar
+            markersOverlay = new GMapOverlay("markers");
+            routesOverlay = new GMapOverlay("routes");
 
+            gMapControl.Overlays.Add(routesOverlay);
+            gMapControl.Overlays.Add(markersOverlay);
+
+            // Başlangıçta marker oluştur (şu anki pozisyon için)
+            currentPositionMarker = new GMarkerGoogle(gMapControl.Position, GMarkerGoogleType.red_dot);
+            markersOverlay.Markers.Add(currentPositionMarker);
+        }
 
         public void UpdatePosition(TelemetryData telemetry)
         {
@@ -53,16 +63,37 @@ namespace MERGEN_KAT3_GCSS
             double deltaLat = Math.Abs(lat - lastLat);
             double deltaLng = Math.Abs(lng - lastLng);
 
-            // Eşik kontrolü (1 metreden az fark varsa güncelleme)
+            // Çok küçük değişiklik varsa işlem yapma
             if (deltaLat < threshold && deltaLng < threshold)
                 return;
 
             lastLat = lat;
             lastLng = lng;
 
-            // Sadece pozisyonu güncelle
-            marker.Position = new PointLatLng(lat, lng);
-            // gMapControl.Position = marker.Position; // Kamera ortalama opsiyonel
+            var newPoint = new PointLatLng(lat, lng);
+
+            // Yeni noktayı rota listesine ekle
+            routePoints.Add(newPoint);
+
+            // Rota overlay'ini temizle (eski çizgileri kaldır)
+            routesOverlay.Routes.Clear();
+
+            // Yeni rota çizgisi oluştur
+            var route = new GMapRoute(routePoints, "route")
+            {
+                Stroke = new Pen(Color.Blue, 2)  // Rota çizgi kalınlığı ve rengi
+            };
+
+            routesOverlay.Routes.Add(route);
+
+            // Şu anki marker pozisyonunu güncelle
+            currentPositionMarker.Position = newPoint;
+
+            // İstersen harita merkezini güncelle
+            gMapControl.Position = newPoint;
+
+            // Haritayı yeniden çiz
+            gMapControl.Refresh();
         }
     }
 }

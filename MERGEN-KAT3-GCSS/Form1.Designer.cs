@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
@@ -60,8 +60,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
-            this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
@@ -119,7 +117,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.sagpanel = new System.Windows.Forms.TableLayoutPanel();
-            this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -132,7 +129,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.cikisbutton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SendMessagebutton = new System.Windows.Forms.Button();
             this.camclosebutton = new System.Windows.Forms.Button();
             this.camopenbutton = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -149,6 +146,11 @@
             this.lSerialConnectButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pilpanel = new System.Windows.Forms.Panel();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
+            this.glControl1 = new OpenTK.GLControl();
+            this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
+            this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
+            this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
             this.batteryProgressBar2 = new MERGEN_KAT3_GCSS.BatteryProgressBar();
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -156,8 +158,10 @@
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grafikpanel.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.sagpanel.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -494,26 +498,6 @@
             this.panel8.Size = new System.Drawing.Size(1086, 880);
             this.panel8.TabIndex = 15;
             // 
-            // circularProgress1
-            // 
-            this.circularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.circularProgress1.Location = new System.Drawing.Point(77, 249);
-            this.circularProgress1.Name = "circularProgress1";
-            this.circularProgress1.Padding = new System.Windows.Forms.Padding(5);
-            this.circularProgress1.Size = new System.Drawing.Size(421, 388);
-            this.circularProgress1.TabIndex = 14;
-            // 
-            // quarterCircularProgress1
-            // 
-            this.quarterCircularProgress1.Angle = 6;
-            this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "LLZ";
-            this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
-            this.quarterCircularProgress1.Name = "quarterCircularProgress1";
-            this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
-            this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "6°";
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
@@ -803,9 +787,9 @@
             // 
             // Column12
             // 
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column12.HeaderText = "PİL DURUMU (%)";
             this.Column12.MinimumWidth = 6;
             this.Column12.Name = "Column12";
@@ -1039,6 +1023,7 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.glControl1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
@@ -1127,18 +1112,10 @@
             this.sagpanel.Size = new System.Drawing.Size(433, 706);
             this.sagpanel.TabIndex = 4;
             // 
-            // compassControl1
-            // 
-            this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.compassControl1.BackColor = System.Drawing.Color.Transparent;
-            this.compassControl1.Location = new System.Drawing.Point(141, 400);
-            this.compassControl1.Name = "compassControl1";
-            this.compassControl1.Size = new System.Drawing.Size(150, 183);
-            this.compassControl1.TabIndex = 3;
-            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.gMapControl1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -1208,8 +1185,8 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.HeaderText = "PAKET NUMARASI";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -1217,19 +1194,19 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(58)))), ((int)(((byte)(116)))));
-            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.Blue;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(58)))), ((int)(((byte)(116)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Blue;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -1253,14 +1230,14 @@
             this.Column19,
             this.Column20,
             this.Column22});
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(29)))), ((int)(((byte)(58)))));
-            dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle55.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(29)))), ((int)(((byte)(58)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
@@ -1313,20 +1290,21 @@
             this.cikisbutton.Size = new System.Drawing.Size(32, 26);
             this.cikisbutton.TabIndex = 23;
             this.cikisbutton.UseVisualStyleBackColor = true;
+            this.cikisbutton.Click += new System.EventHandler(this.cikisbutton_Click);
             // 
-            // button1
+            // SendMessagebutton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.button1.Location = new System.Drawing.Point(589, 43);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 24);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
+            this.SendMessagebutton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SendMessagebutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SendMessagebutton.BackgroundImage")));
+            this.SendMessagebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SendMessagebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SendMessagebutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.SendMessagebutton.Location = new System.Drawing.Point(629, 42);
+            this.SendMessagebutton.Margin = new System.Windows.Forms.Padding(4);
+            this.SendMessagebutton.Name = "SendMessagebutton";
+            this.SendMessagebutton.Size = new System.Drawing.Size(28, 24);
+            this.SendMessagebutton.TabIndex = 17;
+            this.SendMessagebutton.UseVisualStyleBackColor = true;
             // 
             // camclosebutton
             // 
@@ -1335,7 +1313,7 @@
             this.camclosebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.camclosebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.camclosebutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.camclosebutton.Location = new System.Drawing.Point(1194, 0);
+            this.camclosebutton.Location = new System.Drawing.Point(1253, 0);
             this.camclosebutton.Name = "camclosebutton";
             this.camclosebutton.Size = new System.Drawing.Size(38, 38);
             this.camclosebutton.TabIndex = 13;
@@ -1348,7 +1326,7 @@
             this.camopenbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.camopenbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.camopenbutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.camopenbutton.Location = new System.Drawing.Point(1107, 0);
+            this.camopenbutton.Location = new System.Drawing.Point(1166, 0);
             this.camopenbutton.Name = "camopenbutton";
             this.camopenbutton.Size = new System.Drawing.Size(38, 38);
             this.camopenbutton.TabIndex = 14;
@@ -1375,7 +1353,7 @@
             this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton4.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioButton4.ForeColor = System.Drawing.Color.Transparent;
-            this.radioButton4.Location = new System.Drawing.Point(1085, 42);
+            this.radioButton4.Location = new System.Drawing.Point(1142, 44);
             this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(149, 23);
@@ -1392,7 +1370,7 @@
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioButton3.ForeColor = System.Drawing.Color.Transparent;
-            this.radioButton3.Location = new System.Drawing.Point(790, 42);
+            this.radioButton3.Location = new System.Drawing.Point(843, 44);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(131, 23);
@@ -1406,7 +1384,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label17.ForeColor = System.Drawing.Color.Snow;
-            this.label17.Location = new System.Drawing.Point(192, 14);
+            this.label17.Location = new System.Drawing.Point(203, 14);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(224, 20);
@@ -1419,7 +1397,7 @@
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(421, 43);
+            this.textBox1.Location = new System.Drawing.Point(452, 45);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(167, 22);
@@ -1433,7 +1411,7 @@
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioButton2.ForeColor = System.Drawing.Color.Transparent;
-            this.radioButton2.Location = new System.Drawing.Point(938, 42);
+            this.radioButton2.Location = new System.Drawing.Point(997, 44);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(128, 23);
@@ -1451,7 +1429,7 @@
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.radioButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.radioButton1.Location = new System.Drawing.Point(623, 42);
+            this.radioButton1.Location = new System.Drawing.Point(677, 44);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(146, 23);
@@ -1479,7 +1457,7 @@
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.ForeColor = System.Drawing.Color.Black;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(196, 44);
+            this.comboBox2.Location = new System.Drawing.Point(207, 45);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(181, 24);
@@ -1504,10 +1482,10 @@
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Location = new System.Drawing.Point(12, 43);
+            this.comboBox1.Location = new System.Drawing.Point(7, 46);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(130, 24);
+            this.comboBox1.Size = new System.Drawing.Size(138, 24);
             this.comboBox1.TabIndex = 1;
             // 
             // lSerialConnectButton
@@ -1516,7 +1494,7 @@
             this.lSerialConnectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.lSerialConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lSerialConnectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.lSerialConnectButton.Location = new System.Drawing.Point(385, 40);
+            this.lSerialConnectButton.Location = new System.Drawing.Point(396, 38);
             this.lSerialConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.lSerialConnectButton.Name = "lSerialConnectButton";
             this.lSerialConnectButton.Size = new System.Drawing.Size(35, 32);
@@ -1527,7 +1505,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.SendMessagebutton);
             this.groupBox1.Controls.Add(this.camclosebutton);
             this.groupBox1.Controls.Add(this.camopenbutton);
             this.groupBox1.Controls.Add(this.label15);
@@ -1543,9 +1521,9 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.lSerialConnectButton);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Location = new System.Drawing.Point(382, 26);
+            this.groupBox1.Location = new System.Drawing.Point(396, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1247, 92);
+            this.groupBox1.Size = new System.Drawing.Size(1306, 92);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             // 
@@ -1562,13 +1540,80 @@
             this.pilpanel.Size = new System.Drawing.Size(1920, 147);
             this.pilpanel.TabIndex = 7;
             // 
+            // gMapControl1
+            // 
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            this.gMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.LevelsKeepInMemory = 5;
+            this.gMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 2;
+            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MouseWheelZoomEnabled = true;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Size = new System.Drawing.Size(423, 343);
+            this.gMapControl1.TabIndex = 0;
+            this.gMapControl1.Zoom = 0D;
+            // 
+            // glControl1
+            // 
+            this.glControl1.BackColor = System.Drawing.Color.Black;
+            this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControl1.Location = new System.Drawing.Point(0, 0);
+            this.glControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.glControl1.Name = "glControl1";
+            this.glControl1.Size = new System.Drawing.Size(423, 387);
+            this.glControl1.TabIndex = 0;
+            this.glControl1.VSync = false;
+            // 
+            // compassControl1
+            // 
+            this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.compassControl1.BackColor = System.Drawing.Color.Transparent;
+            this.compassControl1.Location = new System.Drawing.Point(141, 400);
+            this.compassControl1.Name = "compassControl1";
+            this.compassControl1.Size = new System.Drawing.Size(150, 183);
+            this.compassControl1.TabIndex = 3;
+            // 
+            // circularProgress1
+            // 
+            this.circularProgress1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgress1.Location = new System.Drawing.Point(77, 249);
+            this.circularProgress1.Name = "circularProgress1";
+            this.circularProgress1.Padding = new System.Windows.Forms.Padding(5);
+            this.circularProgress1.Size = new System.Drawing.Size(421, 388);
+            this.circularProgress1.TabIndex = 14;
+            // 
+            // quarterCircularProgress1
+            // 
+            this.quarterCircularProgress1.Angle = 51;
+            this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
+            this.quarterCircularProgress1.CenterText = "QFL";
+            this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
+            this.quarterCircularProgress1.Name = "quarterCircularProgress1";
+            this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
+            this.quarterCircularProgress1.TabIndex = 13;
+            this.quarterCircularProgress1.ValueLabel = "51°";
+            // 
             // batteryProgressBar2
             // 
             this.batteryProgressBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.batteryProgressBar2.BackColor = System.Drawing.Color.Transparent;
-            this.batteryProgressBar2.Location = new System.Drawing.Point(1720, 48);
+            this.batteryProgressBar2.Location = new System.Drawing.Point(1751, 40);
             this.batteryProgressBar2.Name = "batteryProgressBar2";
-            this.batteryProgressBar2.Percentage = 42;
+            this.batteryProgressBar2.Percentage = 24;
             this.batteryProgressBar2.Size = new System.Drawing.Size(134, 70);
             this.batteryProgressBar2.TabIndex = 35;
             // 
@@ -1584,6 +1629,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -1594,9 +1640,11 @@
             this.panel1.PerformLayout();
             this.grafikpanel.ResumeLayout(false);
             this.grafikpanel.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.sagpanel.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -1709,7 +1757,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button cikisbutton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SendMessagebutton;
         private System.Windows.Forms.Button camclosebutton;
         private System.Windows.Forms.Button camopenbutton;
         private System.Windows.Forms.Label label15;
@@ -1730,6 +1778,8 @@
         private QuarterCircularProgress quarterCircularProgress1;
         private CircularProgress circularProgress1;
         private CompassControl compassControl1;
+        private OpenTK.GLControl glControl1;
+        private GMap.NET.WindowsForms.GMapControl gMapControl1;
     }
 }
 

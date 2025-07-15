@@ -10,9 +10,7 @@ using System.Windows.Forms;
 
 namespace MERGEN_KAT3_GCSS
 {
-    using System;
-    using System.Drawing;
-    using System.Windows.Forms;
+    
 
     public partial class BatteryProgressBar : UserControl
     {

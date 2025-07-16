@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aras.cs" />
     <Compile Include="BatteryProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +108,8 @@
     <Compile Include="CompassControl.Designer.cs">
       <DependentUpon>CompassControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
+    <Compile Include="DataGridViewHandler.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

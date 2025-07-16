@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.LeftButton = new System.Windows.Forms.Button();
@@ -79,24 +79,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tbGSlon = new System.Windows.Forms.TextBox();
             this.tbGSalt = new System.Windows.Forms.TextBox();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -109,23 +91,47 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel13 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.sagpanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.solpanel = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.cikisbutton = new System.Windows.Forms.Button();
@@ -146,8 +152,8 @@
             this.lSerialConnectButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pilpanel = new System.Windows.Forms.Panel();
-            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
-            this.glControl1 = new OpenTK.GLControl();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
             this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
             this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
@@ -158,8 +164,11 @@
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grafikpanel.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.sagpanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -173,12 +182,6 @@
             this.groupBox1.SuspendLayout();
             this.pilpanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "BASINÇ (hpa)";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
             // 
             // UpButton
             // 
@@ -734,120 +737,6 @@
             this.tbGSalt.Size = new System.Drawing.Size(132, 22);
             this.tbGSalt.TabIndex = 2;
             // 
-            // Column22
-            // 
-            this.Column22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column22.HeaderText = "TAKIM NO";
-            this.Column22.MinimumWidth = 6;
-            this.Column22.Name = "Column22";
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "MESAJ";
-            this.Column20.MinimumWidth = 6;
-            this.Column20.Name = "Column20";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "YAW (°)";
-            this.Column18.MinimumWidth = 6;
-            this.Column18.Name = "Column18";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "ROLL (°)";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "PITCH (°)";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            // 
-            // Column15
-            // 
-            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column15.HeaderText = "GPS ALTITUDE";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 84;
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "GPS LONGITUDE";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "GPS LATITUDE";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            // 
-            // Column12
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column12.HeaderText = "PİL DURUMU (%)";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "PİL GERİLİMİ (V)";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "SICAKLIK DIŞ (°C)";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "SICAKLIK İÇ (°C)";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "MESAFE (m)";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "DİKEY HIZ (m/s)";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "YÜKSEKLİK (m)";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "DÖNME AÇISI";
-            this.Column19.MinimumWidth = 6;
-            this.Column19.Name = "Column19";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "GÖNDERME SAATİ";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "HATA KODU";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1011,42 +900,14 @@
             this.label19.Text = "HABERLEŞME YER İST. 2";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.Lime;
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(327, 62);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(97, 49);
-            this.panel11.TabIndex = 7;
-            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.glControl1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(427, 391);
             this.panel5.TabIndex = 0;
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.Lime;
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(225, 62);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(96, 49);
-            this.panel12.TabIndex = 6;
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.Lime;
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(3, 62);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(105, 49);
-            this.panel14.TabIndex = 4;
             // 
             // label26
             // 
@@ -1072,11 +933,11 @@
             this.tableLayoutPanel2.Controls.Add(this.label13, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label14, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label19, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel11, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel12, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel13, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel14, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.label26, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox4, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox5, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox6, 3, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 589);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -1085,14 +946,41 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(427, 114);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
-            // panel13
+            // pictureBox3
             // 
-            this.panel13.BackColor = System.Drawing.Color.Lime;
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(114, 62);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(105, 49);
-            this.panel13.TabIndex = 5;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 62);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(105, 49);
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Location = new System.Drawing.Point(114, 62);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(105, 49);
+            this.pictureBox4.TabIndex = 16;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Location = new System.Drawing.Point(225, 62);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(96, 49);
+            this.pictureBox5.TabIndex = 17;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Location = new System.Drawing.Point(327, 62);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(97, 49);
+            this.pictureBox6.TabIndex = 18;
+            this.pictureBox6.TabStop = false;
             // 
             // sagpanel
             // 
@@ -1121,6 +1009,33 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(427, 347);
             this.panel4.TabIndex = 0;
+            // 
+            // gMapControl1
+            // 
+            this.gMapControl1.Bearing = 0F;
+            this.gMapControl1.CanDragMap = true;
+            this.gMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl1.GrayScaleMode = false;
+            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl1.LevelsKeepInMemory = 5;
+            this.gMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.gMapControl1.MarkersEnabled = true;
+            this.gMapControl1.MaxZoom = 2;
+            this.gMapControl1.MinZoom = 2;
+            this.gMapControl1.MouseWheelZoomEnabled = true;
+            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl1.Name = "gMapControl1";
+            this.gMapControl1.NegativeMode = false;
+            this.gMapControl1.PolygonsEnabled = true;
+            this.gMapControl1.RetryLoadTile = 0;
+            this.gMapControl1.RoutesEnabled = true;
+            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl1.ShowTileGridLines = false;
+            this.gMapControl1.Size = new System.Drawing.Size(423, 343);
+            this.gMapControl1.TabIndex = 0;
+            this.gMapControl1.Zoom = 0D;
             // 
             // panel3
             // 
@@ -1176,37 +1091,21 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "UYDU STATÜSÜ";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.HeaderText = "PAKET NUMARASI";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // dataGridView1
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(58)))), ((int)(((byte)(116)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Blue;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(58)))), ((int)(((byte)(116)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -1214,10 +1113,14 @@
             this.Column3,
             this.Column4,
             this.Column5,
+            this.Column21,
             this.Column6,
+            this.Column23,
             this.Column7,
             this.Column8,
+            this.Column24,
             this.Column9,
+            this.Column25,
             this.Column10,
             this.Column11,
             this.Column12,
@@ -1249,6 +1152,191 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1906, 178);
             this.dataGridView1.TabIndex = 5;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "PaketNumarasi";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column1.HeaderText = "PAKET NUMARASI";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "UyduStatusu";
+            this.Column2.HeaderText = "UYDU STATÜSÜ";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "HataKodu";
+            this.Column3.HeaderText = "HATA KODU";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "GondermeSaati";
+            this.Column4.HeaderText = "GÖNDERME SAATİ";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Basinc1";
+            this.Column5.HeaderText = "BASINÇ1 (hpa)";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "Basinc2";
+            this.Column21.HeaderText = "BASINÇ2 (hpa)";
+            this.Column21.MinimumWidth = 6;
+            this.Column21.Name = "Column21";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Yukseklik1";
+            this.Column6.HeaderText = "YÜKSEKLİK1 (m)";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            // 
+            // Column23
+            // 
+            this.Column23.DataPropertyName = "Yukseklik2";
+            this.Column23.HeaderText = "YÜKSEKLİK2 (m)";
+            this.Column23.MinimumWidth = 6;
+            this.Column23.Name = "Column23";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "DikeyHiz";
+            this.Column7.HeaderText = "DİKEY HIZ (m/s)";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Mesafe";
+            this.Column8.HeaderText = "MESAFE (m)";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            // 
+            // Column24
+            // 
+            this.Column24.DataPropertyName = "YatayHiz";
+            this.Column24.HeaderText = "YATAY HIZ (m/s)";
+            this.Column24.MinimumWidth = 6;
+            this.Column24.Name = "Column24";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "SicaklikIc1";
+            this.Column9.HeaderText = "SICAKLIK İÇ1 (°C)";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            // 
+            // Column25
+            // 
+            this.Column25.DataPropertyName = "SicaklikIc2";
+            this.Column25.HeaderText = "SICAKLIK İÇ2 (°C)";
+            this.Column25.MinimumWidth = 6;
+            this.Column25.Name = "Column25";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "SicaklikDis";
+            this.Column10.HeaderText = "SICAKLIK DIŞ (°C)";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "PilGerilimi";
+            this.Column11.HeaderText = "PİL GERİLİMİ (V)";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "PilDurumu";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column12.HeaderText = "PİL DURUMU (%)";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "Gps1Latitude";
+            this.Column13.HeaderText = "GPS LATITUDE";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "Gps1Longitude";
+            this.Column14.HeaderText = "GPS LONGITUDE";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            // 
+            // Column15
+            // 
+            this.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column15.DataPropertyName = "Gps1Altitude";
+            this.Column15.HeaderText = "GPS ALTITUDE";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 84;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "Pitch";
+            this.Column16.HeaderText = "PITCH (°)";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            // 
+            // Column17
+            // 
+            this.Column17.DataPropertyName = "Roll";
+            this.Column17.HeaderText = "ROLL (°)";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "Yaw";
+            this.Column18.HeaderText = "YAW (°)";
+            this.Column18.MinimumWidth = 6;
+            this.Column18.Name = "Column18";
+            // 
+            // Column19
+            // 
+            this.Column19.DataPropertyName = "DonmeAcisi";
+            this.Column19.HeaderText = "DÖNME AÇISI";
+            this.Column19.MinimumWidth = 6;
+            this.Column19.Name = "Column19";
+            // 
+            // Column20
+            // 
+            this.Column20.DataPropertyName = "Mesaj";
+            this.Column20.HeaderText = "MESAJ";
+            this.Column20.MinimumWidth = 6;
+            this.Column20.Name = "Column20";
+            // 
+            // Column22
+            // 
+            this.Column22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column22.DataPropertyName = "TakimNo";
+            this.Column22.HeaderText = "TAKIM NO";
+            this.Column22.MinimumWidth = 6;
+            this.Column22.Name = "Column22";
             // 
             // tabPage1
             // 
@@ -1462,6 +1550,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(181, 24);
             this.comboBox2.TabIndex = 5;
+            this.comboBox2.DropDown += new System.EventHandler(this.comboBox2_DropDown);
             // 
             // mSerialConnectButton
             // 
@@ -1476,6 +1565,7 @@
             this.mSerialConnectButton.Size = new System.Drawing.Size(35, 32);
             this.mSerialConnectButton.TabIndex = 0;
             this.mSerialConnectButton.UseVisualStyleBackColor = true;
+            this.mSerialConnectButton.Click += new System.EventHandler(this.mSerialConnectButton_Click);
             // 
             // comboBox1
             // 
@@ -1487,6 +1577,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(138, 24);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             // 
             // lSerialConnectButton
             // 
@@ -1500,6 +1591,7 @@
             this.lSerialConnectButton.Size = new System.Drawing.Size(35, 32);
             this.lSerialConnectButton.TabIndex = 4;
             this.lSerialConnectButton.UseVisualStyleBackColor = true;
+            this.lSerialConnectButton.Click += new System.EventHandler(this.lSerialConnectButton_Click);
             // 
             // groupBox1
             // 
@@ -1540,44 +1632,6 @@
             this.pilpanel.Size = new System.Drawing.Size(1920, 147);
             this.pilpanel.TabIndex = 7;
             // 
-            // gMapControl1
-            // 
-            this.gMapControl1.Bearing = 0F;
-            this.gMapControl1.CanDragMap = true;
-            this.gMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
-            this.gMapControl1.GrayScaleMode = false;
-            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl1.LevelsKeepInMemory = 5;
-            this.gMapControl1.Location = new System.Drawing.Point(0, 0);
-            this.gMapControl1.MarkersEnabled = true;
-            this.gMapControl1.MaxZoom = 2;
-            this.gMapControl1.MinZoom = 2;
-            this.gMapControl1.MouseWheelZoomEnabled = true;
-            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl1.Name = "gMapControl1";
-            this.gMapControl1.NegativeMode = false;
-            this.gMapControl1.PolygonsEnabled = true;
-            this.gMapControl1.RetryLoadTile = 0;
-            this.gMapControl1.RoutesEnabled = true;
-            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(423, 343);
-            this.gMapControl1.TabIndex = 0;
-            this.gMapControl1.Zoom = 0D;
-            // 
-            // glControl1
-            // 
-            this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glControl1.Location = new System.Drawing.Point(0, 0);
-            this.glControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.glControl1.Name = "glControl1";
-            this.glControl1.Size = new System.Drawing.Size(423, 387);
-            this.glControl1.TabIndex = 0;
-            this.glControl1.VSync = false;
-            // 
             // compassControl1
             // 
             this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -1598,14 +1652,14 @@
             // 
             // quarterCircularProgress1
             // 
-            this.quarterCircularProgress1.Angle = 51;
+            this.quarterCircularProgress1.Angle = 64;
             this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "QFL";
+            this.quarterCircularProgress1.CenterText = "LUF";
             this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
             this.quarterCircularProgress1.Name = "quarterCircularProgress1";
             this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
             this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "51°";
+            this.quarterCircularProgress1.ValueLabel = "64°";
             // 
             // batteryProgressBar2
             // 
@@ -1613,7 +1667,7 @@
             this.batteryProgressBar2.BackColor = System.Drawing.Color.Transparent;
             this.batteryProgressBar2.Location = new System.Drawing.Point(1751, 40);
             this.batteryProgressBar2.Name = "batteryProgressBar2";
-            this.batteryProgressBar2.Percentage = 24;
+            this.batteryProgressBar2.Percentage = 56;
             this.batteryProgressBar2.Size = new System.Drawing.Size(134, 70);
             this.batteryProgressBar2.TabIndex = 35;
             // 
@@ -1640,9 +1694,12 @@
             this.panel1.PerformLayout();
             this.grafikpanel.ResumeLayout(false);
             this.grafikpanel.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.sagpanel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1661,8 +1718,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Button UpButton;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Button LeftButton;
@@ -1707,24 +1762,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbGSlon;
         private System.Windows.Forms.TextBox tbGSalt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -1737,13 +1774,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.TableLayoutPanel sagpanel;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
@@ -1751,8 +1784,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel solpanel;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -1778,8 +1809,38 @@
         private QuarterCircularProgress quarterCircularProgress1;
         private CircularProgress circularProgress1;
         private CompassControl compassControl1;
-        private OpenTK.GLControl glControl1;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.IO.Ports.SerialPort serialPort2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
     }
 }
 

@@ -18,7 +18,7 @@ namespace MERGEN_KAT3_GCSS
         private readonly Map _map;
        
         private readonly DataGridViewHandler _dataGridHandler;
-       
+        private readonly AngleCalculator _angleCalculator;
         private readonly Aras _aras;
 
         // Thread-safe kuyruklar
@@ -30,12 +30,12 @@ namespace MERGEN_KAT3_GCSS
         private Thread _dataProcessorThread;
 
         public Data(SerialPort port, Map map, Form1 form,
-                   DataGridViewHandler dataGridHandler,  Aras aras)
+                   DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator)
         {
             _port = port;
             _map = map;
             _form = form;
-           
+            _angleCalculator = angleCalculator;
             _dataGridHandler = dataGridHandler;
            
             _aras = aras;
@@ -102,7 +102,7 @@ namespace MERGEN_KAT3_GCSS
                     {
                        
                         _map.UpdatePosition(telemetry);
-                       
+                        _angleCalculator.CalculateAngles(telemetry);
                         _dataGridHandler.AddTelemetry(telemetry);
                         _aras.Update(telemetry.HataKodu);
                     }));

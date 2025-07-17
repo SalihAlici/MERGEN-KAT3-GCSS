@@ -100,7 +100,7 @@ namespace MERGEN_KAT3_GCSS
 
             if (IsInvalidCoordinate(telemetry.Gps1Latitude, telemetry.Gps1Longitude))
             {
-                Console.WriteLine("Geçersiz koordinat - Son geçerli konum kullanılıyor");
+               // Console.WriteLine("Geçersiz koordinat - Son geçerli konum kullanılıyor");
 
                 // Null kontrolü ile son geçerli konumu kullan
                 if (_lastValidPosition.HasValue)

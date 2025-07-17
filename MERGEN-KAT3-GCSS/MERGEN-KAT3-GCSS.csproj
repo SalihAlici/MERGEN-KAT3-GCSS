@@ -89,6 +89,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngleCalculator.cs" />
+    <Compile Include="AntennaController.cs" />
     <Compile Include="Aras.cs" />
     <Compile Include="BatteryProgressBar.cs">
       <SubType>UserControl</SubType>

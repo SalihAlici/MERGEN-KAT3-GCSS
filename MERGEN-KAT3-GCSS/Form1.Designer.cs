@@ -158,6 +158,7 @@
             this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
             this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
             this.batteryProgressBar2 = new MERGEN_KAT3_GCSS.BatteryProgressBar();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -195,6 +196,7 @@
             this.UpButton.Size = new System.Drawing.Size(76, 55);
             this.UpButton.TabIndex = 1;
             this.UpButton.UseVisualStyleBackColor = true;
+            this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
             // 
             // HomeButton
             // 
@@ -208,6 +210,7 @@
             this.HomeButton.Size = new System.Drawing.Size(76, 58);
             this.HomeButton.TabIndex = 0;
             this.HomeButton.UseVisualStyleBackColor = true;
+            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             // 
             // LeftButton
             // 
@@ -221,6 +224,7 @@
             this.LeftButton.Size = new System.Drawing.Size(76, 55);
             this.LeftButton.TabIndex = 2;
             this.LeftButton.UseVisualStyleBackColor = true;
+            this.LeftButton.Click += new System.EventHandler(this.LeftButton_Click);
             // 
             // RightButton
             // 
@@ -234,6 +238,7 @@
             this.RightButton.Size = new System.Drawing.Size(76, 55);
             this.RightButton.TabIndex = 3;
             this.RightButton.UseVisualStyleBackColor = true;
+            this.RightButton.Click += new System.EventHandler(this.RightButton_Click);
             // 
             // groupBox2
             // 
@@ -260,6 +265,7 @@
             this.DownButton.Size = new System.Drawing.Size(76, 55);
             this.DownButton.TabIndex = 4;
             this.DownButton.UseVisualStyleBackColor = true;
+            this.DownButton.Click += new System.EventHandler(this.DownButton_Click);
             // 
             // panel6
             // 
@@ -298,6 +304,7 @@
             this.buttonStracking.TabIndex = 14;
             this.buttonStracking.Text = "Start Tracking!";
             this.buttonStracking.UseVisualStyleBackColor = true;
+            this.buttonStracking.Click += new System.EventHandler(this.buttonStracking_Click);
             // 
             // label21
             // 
@@ -492,6 +499,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.textBox2);
             this.panel8.Controls.Add(this.circularProgress1);
             this.panel8.Controls.Add(this.quarterCircularProgress1);
             this.panel8.Controls.Add(this.label25);
@@ -610,6 +618,7 @@
             this.fhApplyButton.Size = new System.Drawing.Size(69, 51);
             this.fhApplyButton.TabIndex = 11;
             this.fhApplyButton.UseVisualStyleBackColor = true;
+            this.fhApplyButton.Click += new System.EventHandler(this.fhApplyButton_Click);
             // 
             // labelMag
             // 
@@ -633,6 +642,7 @@
             this.tbMSalt.Name = "tbMSalt";
             this.tbMSalt.Size = new System.Drawing.Size(132, 22);
             this.tbMSalt.TabIndex = 5;
+            this.tbMSalt.Text = "0";
             // 
             // tbMSlon
             // 
@@ -644,6 +654,7 @@
             this.tbMSlon.Name = "tbMSlon";
             this.tbMSlon.Size = new System.Drawing.Size(132, 22);
             this.tbMSlon.TabIndex = 4;
+            this.tbMSlon.Text = "34.123678";
             // 
             // labelAntennaElevation
             // 
@@ -667,6 +678,7 @@
             this.tbMSlat.Name = "tbMSlat";
             this.tbMSlat.Size = new System.Drawing.Size(132, 22);
             this.tbMSlat.TabIndex = 3;
+            this.tbMSlat.Text = "35.123678";
             // 
             // labelAntennaAzimuth
             // 
@@ -702,6 +714,7 @@
             this.tbGSlat.Name = "tbGSlat";
             this.tbGSlat.Size = new System.Drawing.Size(132, 22);
             this.tbGSlat.TabIndex = 0;
+            this.tbGSlat.Text = "35.12345";
             // 
             // label20
             // 
@@ -725,6 +738,7 @@
             this.tbGSlon.Name = "tbGSlon";
             this.tbGSlon.Size = new System.Drawing.Size(132, 22);
             this.tbGSlon.TabIndex = 1;
+            this.tbGSlon.Text = "34.12345";
             // 
             // tbGSalt
             // 
@@ -736,6 +750,7 @@
             this.tbGSalt.Name = "tbGSalt";
             this.tbGSalt.Size = new System.Drawing.Size(132, 22);
             this.tbGSalt.TabIndex = 2;
+            this.tbGSalt.Text = "0";
             // 
             // label8
             // 
@@ -1472,7 +1487,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label17.ForeColor = System.Drawing.Color.Snow;
-            this.label17.Location = new System.Drawing.Point(203, 14);
+            this.label17.Location = new System.Drawing.Point(234, 14);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(224, 20);
@@ -1532,7 +1547,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label16.ForeColor = System.Drawing.Color.Snow;
-            this.label16.Location = new System.Drawing.Point(3, 14);
+            this.label16.Location = new System.Drawing.Point(18, 14);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(170, 20);
@@ -1545,7 +1560,7 @@
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.ForeColor = System.Drawing.Color.Black;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(207, 45);
+            this.comboBox2.Location = new System.Drawing.Point(7, 45);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(181, 24);
@@ -1559,7 +1574,7 @@
             this.mSerialConnectButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.mSerialConnectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mSerialConnectButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.mSerialConnectButton.Location = new System.Drawing.Point(153, 40);
+            this.mSerialConnectButton.Location = new System.Drawing.Point(202, 37);
             this.mSerialConnectButton.Margin = new System.Windows.Forms.Padding(4);
             this.mSerialConnectButton.Name = "mSerialConnectButton";
             this.mSerialConnectButton.Size = new System.Drawing.Size(35, 32);
@@ -1572,7 +1587,7 @@
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Location = new System.Drawing.Point(7, 46);
+            this.comboBox1.Location = new System.Drawing.Point(250, 44);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(138, 24);
@@ -1601,6 +1616,7 @@
             this.groupBox1.Controls.Add(this.camclosebutton);
             this.groupBox1.Controls.Add(this.camopenbutton);
             this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.label17);
@@ -1608,7 +1624,6 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.mSerialConnectButton);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.lSerialConnectButton);
@@ -1652,14 +1667,14 @@
             // 
             // quarterCircularProgress1
             // 
-            this.quarterCircularProgress1.Angle = 64;
+            this.quarterCircularProgress1.Angle = 58;
             this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "LUF";
+            this.quarterCircularProgress1.CenterText = "VSQ";
             this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
             this.quarterCircularProgress1.Name = "quarterCircularProgress1";
             this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
             this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "64°";
+            this.quarterCircularProgress1.ValueLabel = "58°";
             // 
             // batteryProgressBar2
             // 
@@ -1667,9 +1682,17 @@
             this.batteryProgressBar2.BackColor = System.Drawing.Color.Transparent;
             this.batteryProgressBar2.Location = new System.Drawing.Point(1751, 40);
             this.batteryProgressBar2.Name = "batteryProgressBar2";
-            this.batteryProgressBar2.Percentage = 56;
+            this.batteryProgressBar2.Percentage = 66;
             this.batteryProgressBar2.Size = new System.Drawing.Size(134, 70);
             this.batteryProgressBar2.TabIndex = 35;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(397, 712);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(469, 89);
+            this.textBox2.TabIndex = 15;
             // 
             // Form1
             // 
@@ -1841,6 +1864,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

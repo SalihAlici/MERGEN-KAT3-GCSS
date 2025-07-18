@@ -23,23 +23,19 @@ namespace MERGEN_KAT3_GCSS
         // Hata durumunu güncelleyen metot
         public void Update(string error)
         {
-            // Hata stringinin uzunluğu kontrol edilir 6 karakter olmalı
-            if (error.Length != 4)
-                throw new ArgumentException("error stringi sayısı eşleşmiyor!");
-
             bool alarm = false; // Alarm durumu için bayrak başlangıçta false
 
             // Her PictureBox için hata durumunu kontrol et
             for (int i = 0; i < pictureBoxes.Length; i++)
             {
-                if (error[i] == '0') // Hata yoksa 0
-                {
-                    pictureBoxes[i].BackColor = Color.Chartreuse; // Yeşil renk 
-                }
-                else if (error[i] == '1') // Hata varsa 1
+                if (i < error.Length && error[i] == '1') // Hata varsa 1
                 {
                     pictureBoxes[i].BackColor = Color.Red; // Kırmızı renk 
                     alarm = true; // Alarm durumu aktif
+                }
+                else
+                {
+                    pictureBoxes[i].BackColor = Color.Chartreuse; // Hata yoksa veya karakter eksikse yeşil
                 }
             }
 

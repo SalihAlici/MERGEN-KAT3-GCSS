@@ -27,7 +27,7 @@ namespace MERGEN_KAT3_GCSS
         public void UpdateAnglesFromTelemetry(TelemetryData telemetry)
         {
             if (telemetry == null) return;
-
+            Console.WriteLine("UpdateAngels calisti");
             var (_, _, az, el) = ang.CalculateAngles(telemetry);
             azimuth = az;
             elevation = el;
@@ -38,10 +38,11 @@ namespace MERGEN_KAT3_GCSS
         }
         public void UpdateAnglesManually()
         {
-            Console.WriteLine("UpdateAnglesManually çağrıldı.");
+           // Console.WriteLine("UpdateAnglesManually çağrıldı.");
             var (_, _, az, el) = ang.ManuelCalculateAngles();
             azimuth = az;
             elevation = el;
+            
            
         }
 
@@ -50,7 +51,10 @@ namespace MERGEN_KAT3_GCSS
             if (serialPort == null || !serialPort.IsOpen)
                 return;
 
-            string command = $"{azimuth:F2},{elevation:F2}";
+            
+            //string command = $"{azimuth:F2},{elevation:F2}";
+            string command = string.Format(CultureInfo.InvariantCulture, "{0:F2},{1:F2}", azimuth, elevation);
+
             serialPort.WriteLine(command);
             System.Console.WriteLine("Gönderilen komut: " + command);
         }
@@ -74,7 +78,7 @@ namespace MERGEN_KAT3_GCSS
             if ((serialPort != null && serialPort.IsOpen))
             {
                 serialPort.WriteLine(command);
-                Console.WriteLine("Motor komutu gönderildi: " + command);
+                //Console.WriteLine("Motor komutu gönderildi: " + command);
             }
         }
 

@@ -60,6 +60,7 @@ namespace MERGEN_KAT3_GCSS
 
 
             Console.WriteLine($"Manual Hesaplama Yapıldı: azimuth={azimuth}");
+            Console.WriteLine($"Manual Hesaplama Yapıldı: el={elevation}");
 
 
             return (horizontalDistance, verticalDistance, azimuth ,elevation);
@@ -68,7 +69,8 @@ namespace MERGEN_KAT3_GCSS
         public (double horizontalDistance, double verticalDistance, double azimuth, double elevation) CalculateAngles(TelemetryData telemetry)
         {
             // GPS1 = Uydu (hedef)
-            Console.WriteLine(telemetry);
+            Console.WriteLine("UYDU: " + telemetry.Gps1Latitude + " "+  telemetry.Gps1Longitude + " " + telemetry.Gps1Altitude);
+            Console.WriteLine("YER ISTASYONU: " + telemetry.Gps2Latitude + " " + telemetry.Gps2Longitude + " " + telemetry.Gps2Altitude);
             double targetLat = telemetry.Gps1Latitude;
             double targetLon = telemetry.Gps1Longitude;
             double targetAlt = telemetry.Gps1Altitude;
@@ -108,7 +110,7 @@ namespace MERGEN_KAT3_GCSS
 
             // Elevation hesaplama
             double elevation = Math.Atan2(verticalDistance, horizontalDistance) * (180.0 / Math.PI);
-            Console.WriteLine(azimuth);
+            //Console.WriteLine(azimuth);
             return (horizontalDistance, verticalDistance, azimuth, elevation);
         }
 

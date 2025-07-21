@@ -20,7 +20,7 @@ namespace MERGEN_KAT3_GCSS
         private readonly DataGridViewHandler _dataGridHandler;
         private readonly AngleCalculator _angleCalculator;
         private readonly Aras _aras;
-
+        private readonly AntennaController _antennaController;
         // Thread-safe kuyruklar
         private readonly BlockingCollection<TelemetryData> _processingQueue = new BlockingCollection<TelemetryData>(1000);
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
@@ -30,14 +30,14 @@ namespace MERGEN_KAT3_GCSS
         private Thread _dataProcessorThread;
 
         public Data(SerialPort port, Map map, Form1 form,
-                   DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator)
+                   DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator,AntennaController antennaController)
         {
             _port = port;
             _map = map;
             _form = form;
             _angleCalculator = angleCalculator;
             _dataGridHandler = dataGridHandler;
-           
+           _antennaController = antennaController;
             _aras = aras;
 
             InitializeThreads();
@@ -103,6 +103,7 @@ namespace MERGEN_KAT3_GCSS
                        
                         _map.UpdatePosition(telemetry);
                         _angleCalculator.CalculateAngles(telemetry);
+                        _antennaController.UpdateAnglesFromTelemetry(telemetry);
                         _dataGridHandler.AddTelemetry(telemetry);
                         _aras.Update(telemetry.HataKodu);
                     }));

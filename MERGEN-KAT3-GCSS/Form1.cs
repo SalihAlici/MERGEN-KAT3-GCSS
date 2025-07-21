@@ -220,7 +220,7 @@ namespace MERGEN_KAT3_GCSS
 
             try
             {
-                dataHandler = new Data(serialPort1, map, this, dataGridViewHandler,  aras,angleCalculator); // event bağlanıyor
+                dataHandler = new Data(serialPort1, map, this, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
                 dataHandler.Connect();
                 // serialPort1.Open();
 

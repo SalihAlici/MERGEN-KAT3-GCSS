@@ -16,7 +16,7 @@ namespace MERGEN_KAT3_GCSS
         private readonly SerialPort _port;
         private readonly Form1 _form;
         private readonly Map _map;
-       
+        private readonly Charts _charts;
         private readonly DataGridViewHandler _dataGridHandler;
         private readonly AngleCalculator _angleCalculator;
         private readonly Aras _aras;
@@ -29,12 +29,13 @@ namespace MERGEN_KAT3_GCSS
         private Thread _serialReaderThread;
         private Thread _dataProcessorThread;
 
-        public Data(SerialPort port, Map map, Form1 form,
+        public Data(SerialPort port, Map map, Form1 form,Charts charts,
                    DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator,AntennaController antennaController)
         {
             _port = port;
             _map = map;
             _form = form;
+            _charts = charts;
             _angleCalculator = angleCalculator;
             _dataGridHandler = dataGridHandler;
            _antennaController = antennaController;

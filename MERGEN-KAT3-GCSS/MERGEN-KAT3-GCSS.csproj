@@ -78,6 +78,7 @@
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,6 +99,7 @@
     <Compile Include="BatteryProgressBar.Designer.cs">
       <DependentUpon>BatteryProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Charts.cs" />
     <Compile Include="CircularProgress.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +135,7 @@
       <DependentUpon>QuarterCircularProgress.cs</DependentUpon>
     </Compile>
     <Compile Include="TelemetryData.cs" />
+    <Compile Include="_3DSimulation.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

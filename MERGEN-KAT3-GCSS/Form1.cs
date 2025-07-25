@@ -20,6 +20,7 @@ namespace MERGEN_KAT3_GCSS
         private Data dataHandler;
         private DataGridViewHandler dataGridViewHandler;
         Map map;
+        private Charts charts;
         private Aras aras;
         AngleCalculator angleCalculator;
         private AntennaController antCont;
@@ -31,6 +32,7 @@ namespace MERGEN_KAT3_GCSS
         {
             InitializeComponent();
             map = new Map(gMapControl1);
+            charts = new Charts(chart1, chart2, chart3, chart4, chart5, chart6, chart7, chart8);
             aras = new Aras(pictureBox3, pictureBox4, pictureBox5, pictureBox6);
             string csvPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "TELEMETRİ-KAT3.csv");
             dataGridViewHandler = new DataGridViewHandler(dataGridView1, csvPath);
@@ -220,7 +222,7 @@ namespace MERGEN_KAT3_GCSS
 
             try
             {
-                dataHandler = new Data(serialPort1, map, this, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
+                dataHandler = new Data(serialPort1, map, this,charts, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
                 dataHandler.Connect();
                 // serialPort1.Open();
 

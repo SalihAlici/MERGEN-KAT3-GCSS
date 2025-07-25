@@ -33,11 +33,11 @@ namespace MERGEN_KAT3_GCSS
             // GÖSTERMEK İSTEMEDİĞİNİZ KOLONLARI GİZLE
             string[] hiddenColumns =
             {
-                "DonmeAcisi",
+                
                 "Gps2Latitude",
                 "Gps2Longitude",
                 "Gps2Altitude",
-                "Kuzey"
+                
             };
 
             _dataGridView.DataBindingComplete += (s, e) =>

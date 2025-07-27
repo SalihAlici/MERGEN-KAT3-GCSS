@@ -198,7 +198,7 @@ namespace MERGEN_KAT3_GCSS
 
             // Model rotasyonları uygulanıyor.
             GL.Rotate(simulation.x, 0.0, 0.0, -1.0);  // yaw (z)
-            GL.Rotate(simulation.z, 0.0, 1.0, 0.0);  // pitch (x)
+            GL.Rotate(simulation.z, 0.0, 1.0, 0.0);  // pitch (xZZ
             GL.Rotate(simulation.y, -1.0, 0.0, 0.0);  // roll (y)   
 
 

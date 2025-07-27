@@ -8,10 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 using System.IO.Ports;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Threading;
+
 
 namespace MERGEN_KAT3_GCSS
 {
@@ -22,6 +25,7 @@ namespace MERGEN_KAT3_GCSS
         Map map;
         private Charts charts;
         private Aras aras;
+        _3DSimulation simulation;
         AngleCalculator angleCalculator;
         private AntennaController antCont;
         private double latitude0, longitude0, altitude0, latitude1, longitude1, altitude1;
@@ -38,6 +42,7 @@ namespace MERGEN_KAT3_GCSS
             dataGridViewHandler = new DataGridViewHandler(dataGridView1, csvPath);
             antCont = new AntennaController(serialPort2);
             angleCalculator = new AngleCalculator();
+            simulation = new _3DSimulation(glControl1);
             LoadAvailablePorts();
         }
 
@@ -164,6 +169,47 @@ namespace MERGEN_KAT3_GCSS
 
         }
 
+        private void glControl1_Load(object sender, EventArgs e)
+        {
+            GL.ClearColor(Color.FromArgb(24, 30, 54)); // Arka plan rengi
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthFunc(DepthFunction.Less);
+
+        }
+
+        private void glControl1_Paint(object sender, PaintEventArgs e)
+        {
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            // Perspektif ve kamera ayarları.
+            Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView(1.04f, (float)glControl1.Width / glControl1.Height, 1, 10000);
+            Matrix4 lookAt = Matrix4.LookAt(25, 0, 0, 0, 0, 0, 0, 1, 0);
+
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            GL.LoadMatrix(ref perspective);
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+            GL.LoadMatrix(ref lookAt);
+
+            GL.Viewport(0, 0, glControl1.Width, glControl1.Height);
+
+
+            // Model rotasyonları uygulanıyor.
+            GL.Rotate(simulation.x, 0.0, 0.0, -1.0);  // yaw (z)
+            GL.Rotate(simulation.z, 0.0, 1.0, 0.0);  // pitch (x)
+            GL.Rotate(simulation.y, -1.0, 0.0, 0.0);  // roll (y)   
+
+
+            // Modelin çizimi: alternatif model seçimine göre.
+            
+                simulation.DrawCube();
+            
+
+            glControl1.SwapBuffers();
+        }
+
         private void UpdateLabels()
         {
             labelAntennaAzimuth.Text = "Azimuth: " + motorAzimuth.ToString("0.###", CultureInfo.InvariantCulture);
@@ -222,7 +268,7 @@ namespace MERGEN_KAT3_GCSS
 
             try
             {
-                dataHandler = new Data(serialPort1, map, this,charts, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
+                dataHandler = new Data(serialPort1, map, this,charts,simulation, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
                 dataHandler.Connect();
                 // serialPort1.Open();
 

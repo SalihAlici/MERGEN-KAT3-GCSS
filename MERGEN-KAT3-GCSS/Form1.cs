@@ -234,7 +234,7 @@ namespace MERGEN_KAT3_GCSS
                 string plainText = textBox1.Text;
                
 
-                string dataToSend = "C," + plainText;  // Başına "A," ekledik
+                string dataToSend = "A," + plainText;  // Başına "A," ekledik
                 serialPort1.WriteLine(dataToSend);       // HEX string olarak gönder
             }
             else

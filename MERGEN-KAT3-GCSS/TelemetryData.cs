@@ -22,7 +22,7 @@ namespace MERGEN_KAT3_GCSS
         public float SicaklikIc { get; set; }
         public float SicaklikDis { get; set; }
         public float PilGerilimi { get; set; }
-        public float PilDurumu { get; set; }
+        public int PilDurumu { get; set; }
         public double Gps1Latitude { get; set; }
         public double Gps1Longitude { get; set; }
         public float Gps1Altitude { get; set; }
@@ -58,7 +58,7 @@ namespace MERGEN_KAT3_GCSS
                 SicaklikIc = SafeParseFloat(parts[9]),
                 SicaklikDis = SafeParseFloat(parts[10]),
                 PilGerilimi = SafeParseFloat(parts[11]),
-                PilDurumu = SafeParseFloat(parts[12]),
+                PilDurumu = SafeParseInt(parts[12]),
                 Gps1Latitude = SafeParseDouble(parts[13]),
                 Gps1Longitude = SafeParseDouble(parts[14]),
                 Gps1Altitude = SafeParseFloat(parts[15]),

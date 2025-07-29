@@ -185,6 +185,7 @@
             this.pilpanel = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
             this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
@@ -1674,6 +1675,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1920, 933);
             this.tabControl1.TabIndex = 8;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // cikisbutton
             // 
@@ -1696,12 +1698,13 @@
             this.SendMessagebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SendMessagebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendMessagebutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.SendMessagebutton.Location = new System.Drawing.Point(629, 42);
+            this.SendMessagebutton.Location = new System.Drawing.Point(627, 23);
             this.SendMessagebutton.Margin = new System.Windows.Forms.Padding(4);
             this.SendMessagebutton.Name = "SendMessagebutton";
             this.SendMessagebutton.Size = new System.Drawing.Size(28, 24);
             this.SendMessagebutton.TabIndex = 17;
             this.SendMessagebutton.UseVisualStyleBackColor = true;
+            this.SendMessagebutton.Click += new System.EventHandler(this.SendMessagebutton_Click);
             // 
             // camclosebutton
             // 
@@ -1906,6 +1909,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.SendMessagebutton);
             this.groupBox1.Controls.Add(this.camclosebutton);
             this.groupBox1.Controls.Add(this.camopenbutton);
@@ -1941,6 +1945,19 @@
             this.pilpanel.Size = new System.Drawing.Size(1920, 147);
             this.pilpanel.TabIndex = 7;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(627, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 30);
+            this.button1.TabIndex = 18;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // compassControl1
             // 
             this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -1961,14 +1978,14 @@
             // 
             // quarterCircularProgress1
             // 
-            this.quarterCircularProgress1.Angle = 4;
+            this.quarterCircularProgress1.Angle = 6;
             this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "JDK";
+            this.quarterCircularProgress1.CenterText = "OHB";
             this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
             this.quarterCircularProgress1.Name = "quarterCircularProgress1";
             this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
             this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "4°";
+            this.quarterCircularProgress1.ValueLabel = "6°";
             // 
             // batteryProgressBar2
             // 
@@ -2104,7 +2121,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button cikisbutton;
         private System.Windows.Forms.Button SendMessagebutton;
         private System.Windows.Forms.Button camclosebutton;
@@ -2126,7 +2142,6 @@
         private BatteryProgressBar batteryProgressBar2;
         private QuarterCircularProgress quarterCircularProgress1;
         private CircularProgress circularProgress1;
-        private CompassControl compassControl1;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -2166,6 +2181,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
         private OpenTK.GLControl glControl1;
+        private CompassControl compassControl1;
+        public System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

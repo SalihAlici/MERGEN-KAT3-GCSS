@@ -14,7 +14,8 @@ using System.IO.Ports;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Threading;
-
+using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace MERGEN_KAT3_GCSS
 {
@@ -32,6 +33,8 @@ namespace MERGEN_KAT3_GCSS
         private CancellationTokenSource trackingTokenSource;
         private double motorAzimuth = 0, motorElevation = 0;
 
+        private readonly byte[] key = Encoding.UTF8.GetBytes("1234567890123456"); // 16 byte = AES-128
+        private readonly byte[] iv = Encoding.UTF8.GetBytes("6543210987654321");  // 16 byte IV
         public Form1()
         {
             InitializeComponent();
@@ -43,6 +46,7 @@ namespace MERGEN_KAT3_GCSS
             antCont = new AntennaController(serialPort2);
             angleCalculator = new AngleCalculator();
             simulation = new _3DSimulation(glControl1);
+        
             LoadAvailablePorts();
         }
 
@@ -197,17 +201,83 @@ namespace MERGEN_KAT3_GCSS
 
 
             // Model rotasyonları uygulanıyor.
-            GL.Rotate(simulation.x, 0.0, 0.0, -1.0);  // yaw (z)
-            GL.Rotate(simulation.z, 0.0, 1.0, 0.0);  // pitch (xZZ
-            GL.Rotate(simulation.y, -1.0, 0.0, 0.0);  // roll (y)   
+               GL.Rotate(simulation.x, 0.0, 0.0, -1.0);  
+               GL.Rotate(simulation.z, 0.0, 1.0, 0.0);  
+               GL.Rotate(simulation.y, -1.0, 0.0, 0.0);   
+
+          
+
+           
+
+
+
 
 
             // Modelin çizimi: alternatif model seçimine göre.
-            
-                simulation.DrawCube();
+
+            simulation.DrawCube();
             
 
             glControl1.SwapBuffers();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"SelectedIndexChanged: {tabControl1.SelectedIndex} at {DateTime.Now.Millisecond}");
+
+        }
+
+        private void SendMessagebutton_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                string plainText = textBox1.Text;
+                string encryptedHex = EncryptToHex(plainText);
+
+                string dataToSend = "A," + encryptedHex;  // Başına "A," ekledik
+                serialPort1.WriteLine(dataToSend);       // HEX string olarak gönder
+            }
+            else
+            {
+                MessageBox.Show("Seri port açık değil!");
+            }
+        }
+
+        private string EncryptToHex(string plainText)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform encryptor = aes.CreateEncryptor();
+
+                byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
+                byte[] encryptedBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);
+
+                // HEX string'e dönüştür
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in encryptedBytes)
+                {
+                    sb.AppendFormat("{0:X2}", b); // örn: "AF", "01", "B3"
+                }
+                return sb.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                string plainText = textBox1.Text;
+                serialPort1.WriteLine(plainText);  // Şifrelemeden direkt gönder
+            }
+            else
+            {
+                MessageBox.Show("Seri port açık değil!");
+            }
         }
 
         private void UpdateLabels()
@@ -268,7 +338,7 @@ namespace MERGEN_KAT3_GCSS
 
             try
             {
-                dataHandler = new Data(serialPort1, map, this,charts,simulation, dataGridViewHandler,  aras,angleCalculator,antCont); // event bağlanıyor
+                dataHandler = new Data(serialPort1, map, this,charts,simulation, dataGridViewHandler,  aras,angleCalculator,antCont,batteryProgressBar2,compassControl1); // event bağlanıyor
                 dataHandler.Connect();
                 // serialPort1.Open();
 

@@ -59,5 +59,15 @@ namespace MERGEN_KAT3_GCSS.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Email_Send {
+            get {
+                object obj = ResourceManager.GetObject("Email Send", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

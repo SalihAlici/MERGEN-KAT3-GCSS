@@ -23,12 +23,9 @@ namespace MERGEN_KAT3_GCSS
             this.BackColor = Color.Transparent;
         }
 
-        /// <summary>
-        /// Pusulanın açısını ayarlar (0–360 arası)
-        /// </summary>
-        public void SetAngle(float degrees)
+        public void SetAngle(TelemetryData telemetry)
         {
-            angle = degrees % 360f;
+            angle = telemetry.Yaw % 360f;
             if (angle < 0) angle += 360f;
             Invalidate(); // Yeniden çiz
         }
@@ -49,20 +46,20 @@ namespace MERGEN_KAT3_GCSS
 
             var circleRect = new Rectangle(cx - radius, cy - radius, radius * 2, radius * 2);
 
-            // 1) Zemin: hafif gölgeli daire
+            // 1) Zemin
             using (var bgBrush = new PathGradientBrush(new GraphicsPath(
-                     new Point[] {
-                         new Point(cx, cy - radius),
-                         new Point(cx + radius, cy),
-                         new Point(cx, cy + radius),
-                         new Point(cx - radius, cy)
-                     },
-                     new byte[] {
-                         (byte)PathPointType.Start,
-                         (byte)PathPointType.Line,
-                         (byte)PathPointType.Line,
-                         (byte)PathPointType.Line
-                     })))
+                new Point[] {
+                new Point(cx, cy - radius),
+                new Point(cx + radius, cy),
+                new Point(cx, cy + radius),
+                new Point(cx - radius, cy)
+                },
+                new byte[] {
+                (byte)PathPointType.Start,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line
+                })))
             {
                 bgBrush.CenterColor = Color.White;
                 bgBrush.SurroundColors = new[] { Color.LightGray };
@@ -89,14 +86,15 @@ namespace MERGEN_KAT3_GCSS
                     g.DrawLine(tickPen, x1, y1, x2, y2);
             }
 
-            // 4) Yön harfleri (sadece ilk harf, kalın font)
-            DrawDirection(g, "N", cx, cy - radius + 30);
-            DrawDirection(g, "E", cx + radius - 30, cy);
-            DrawDirection(g, "S", cx, cy + radius - 30);
-            DrawDirection(g, "W", cx - radius + 30, cy);
+            // 4) Yön harfleri - daha küçük ve koyu
+            int textOffset = radius - 20;
+            DrawDirection(g, "N", cx, cy - textOffset);
+            DrawDirection(g, "E", cx + textOffset, cy);
+            DrawDirection(g, "S", cx, cy + textOffset);
+            DrawDirection(g, "W", cx - textOffset, cy);
 
-            // 5) İğne: iki renkli üçgen
-            DrawNeedle(g, cx, cy, radius - 40);
+            // 5) İğne: büyütülmüş
+            DrawNeedle(g, cx, cy, radius - 10, 18f); // Yeni: genişlik parametresi
 
             // 6) Ortadaki düğme
             g.FillEllipse(Brushes.DimGray, cx - 8, cy - 8, 16, 16);
@@ -105,38 +103,33 @@ namespace MERGEN_KAT3_GCSS
 
         private void DrawDirection(Graphics g, string text, float x, float y)
         {
-            using (var font = new Font("Arial", 16, FontStyle.Bold))
+            using (var font = new Font("Arial", 10, FontStyle.Bold)) // Küçültüldü
             {
                 SizeF sz = g.MeasureString(text, font);
                 g.DrawString(text, font, Brushes.Black, x - sz.Width / 2, y - sz.Height / 2);
             }
         }
 
-        private void DrawNeedle(Graphics g, int cx, int cy, int length)
+        private void DrawNeedle(Graphics g, int cx, int cy, int length, float width)
         {
-            // Kuzey ucunu kırmızı, güney ucunu beyaz çizelim
             float rad = angle * (float)Math.PI / 180f;
             float sin = (float)Math.Sin(rad), cos = (float)Math.Cos(rad);
 
-            // Üçgenlerin noktaları
+            // Kuzeye bakan kırmızı üçgen (büyütüldü)
             PointF tip = new PointF(cx + sin * length, cy - cos * length);
-            PointF left = new PointF(cx + cos * 10, cy + sin * 10);
-            PointF right = new PointF(cx - cos * 10, cy - sin * 10);
-
-            // Kuzeye bakan kırmızı üçgen
+            PointF left = new PointF(cx + cos * (width / 2f), cy + sin * (width / 2f));
+            PointF right = new PointF(cx - cos * (width / 2f), cy - sin * (width / 2f));
             using (var redBrush = new SolidBrush(Color.Red))
-            {
                 g.FillPolygon(redBrush, new[] { tip, left, right });
-            }
 
-            // Güneye bakan beyaz üçgen (tersi)
-            PointF tip2 = new PointF(cx - sin * (length * 0.6f), cy + cos * (length * 0.6f));
-            PointF left2 = new PointF(cx + cos * (-10), cy + sin * (-10));
-            PointF right2 = new PointF(cx - cos * (-10), cy - sin * (-10));
+            // Güneye bakan beyaz üçgen
+            float backLength = length * 0.6f;
+            PointF tip2 = new PointF(cx - sin * backLength, cy + cos * backLength);
+            PointF left2 = new PointF(cx - cos * (width / 2f), cy - sin * (width / 2f));
+            PointF right2 = new PointF(cx + cos * (width / 2f), cy + sin * (width / 2f));
             using (var whiteBrush = new SolidBrush(Color.White))
-            {
                 g.FillPolygon(whiteBrush, new[] { tip2, left2, right2 });
-            }
         }
     }
+
 }

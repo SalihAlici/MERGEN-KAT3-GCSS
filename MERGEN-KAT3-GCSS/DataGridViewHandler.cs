@@ -15,7 +15,7 @@ namespace MERGEN_KAT3_GCSS
         private readonly DataGridView _dataGridView;
         private readonly string _csvFilePath;
         private readonly object _csvLock = new object();
-        private const int MAX_ROWS = 500;
+        private const int MAX_ROWS = 100;
 
         public DataGridViewHandler(DataGridView dgv, string csvFilePath)
         {

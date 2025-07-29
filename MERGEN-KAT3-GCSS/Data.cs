@@ -18,9 +18,11 @@ namespace MERGEN_KAT3_GCSS
         private readonly Map _map;
         private readonly Charts _charts;
         private readonly DataGridViewHandler _dataGridHandler;
-        _3DSimulation _simulation;
+        private readonly _3DSimulation _simulation;
         private readonly AngleCalculator _angleCalculator;
         private readonly Aras _aras;
+        private readonly BatteryProgressBar _battery;
+        private readonly CompassControl _compass;
         private readonly AntennaController _antennaController;
         // Thread-safe kuyruklar
         private readonly BlockingCollection<TelemetryData> _processingQueue = new BlockingCollection<TelemetryData>(1000);
@@ -31,7 +33,7 @@ namespace MERGEN_KAT3_GCSS
         private Thread _dataProcessorThread;
 
         public Data(SerialPort port, Map map, Form1 form, Charts charts,_3DSimulation simulation,
-                   DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator,AntennaController antennaController)
+                   DataGridViewHandler dataGridHandler,  Aras aras, AngleCalculator angleCalculator,AntennaController antennaController,BatteryProgressBar battery,CompassControl compass)
         {
             _port = port;
             _map = map;
@@ -42,7 +44,8 @@ namespace MERGEN_KAT3_GCSS
             _dataGridHandler = dataGridHandler;
            _antennaController = antennaController;
             _aras = aras;
-
+            _battery = battery;
+            _compass = compass;
             InitializeThreads();
         }
 
@@ -104,13 +107,23 @@ namespace MERGEN_KAT3_GCSS
                     // UI güncellemelerini tek Invoke'da topla
                     _form.Invoke((MethodInvoker)(() =>
                     {
-                        _simulation.UpdateRotation(telemetry.Yaw, telemetry.Pitch, telemetry.Roll);
-                        _map.UpdatePosition(telemetry);
-                        _charts.Update(telemetry);
+                        int index = _form.tabControl1.SelectedIndex;
+
+                        // Sürekli çalışması gerekenler (her zaman)
                         _angleCalculator.CalculateAngles(telemetry);
                         _antennaController.UpdateAnglesFromTelemetry(telemetry);
+                        _battery.Update(telemetry);
+                        _map.UpdatePosition(telemetry);
+                        _charts.Update(telemetry);
                         _dataGridHandler.AddTelemetry(telemetry);
                         _aras.Update(telemetry.HataKodu);
+                        // Sadece 0. sekme görünürken güncelle
+                        if (index == 0)
+                        {
+                            _simulation.UpdateRotation(telemetry.Yaw, telemetry.Pitch, telemetry.Roll);
+                            
+                            _compass.SetAngle(telemetry);
+                        }
                     }));
 
                     // Güncelleme hızını sınırla (max 30 FPS)

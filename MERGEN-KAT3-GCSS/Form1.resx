@@ -4414,6 +4414,17 @@
         bOXYJEmePD09vZ39EwAAEKzb3Ob/A9cbqTH9svbpAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAS1JREFUSEvt
+        lOFRwzAMhTNCR+gIHYERugHdgG5CN6AbwAawAd2AbgAbhO8pSs8xUnDTfxzf3TvnYuk5kW11/4z0fb9B
+        j+gDvfrr28BojR7QOyo5e8j1kLxC9+hZTgkHD2+HpC16Qp9yCDj7KDaeNo8C0VjXjC/0NjwaJ0+PISCr
+        a4TMd6j8q71bTWFCJZira80J6WPqkq3dcopPtnJE2uz6L1/c7idMHoaYX7ESMGqRmp2ZZRAQJY2o3luP
+        29ubKZpfmdEcBEWL6Aja0WPUXkUczaAFBQ85ho6gfRmjjm12D+zvmiFBx+9y5HjWpmb3YXlrGMGkvEw1
+        17eGEgyiTS1paw0ZGKhcGfOtoRWMsiMct4YlYBYtEreGpWBYLpK3hlvAWG1FN/fOX/1Zuu4bpvw4HKIf
+        BPYAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -11,7 +11,7 @@ namespace MERGEN_KAT3_GCSS
     public class Charts
     {
         private readonly Chart[] _charts;
-        private const int MAX_POINTS = 1000;
+        private const int MAX_POINTS = 100;
 
         public Charts(Chart ch1, Chart ch2, Chart ch3, Chart ch4, Chart ch5, Chart ch6, Chart ch7, Chart ch8)
         {
@@ -28,7 +28,7 @@ namespace MERGEN_KAT3_GCSS
 
                 foreach (var series in chart.Series)
                 {
-                    // series.ChartType = SeriesChartType.FastLine;
+                    
                     series.BorderWidth = 1;
                 }
             }
@@ -44,28 +44,28 @@ namespace MERGEN_KAT3_GCSS
 
             string timeLabel = FormatTimeLabel(data.GondermeSaati);
 
-            // Chart 1: Basınç 1 ve 2
+         
             UpdateChart(_charts[0], timeLabel, data.Basinc);
 
-            // Chart 2: Yükseklik 1
+           
             UpdateChart(_charts[1], timeLabel, data.Yukseklik);
 
-            // Chart 3: Yükseklik 2
+            
             UpdateChart(_charts[2], timeLabel, data.DikeyHiz);
 
-            // Chart 4: İrtifa Farkı
+            
             UpdateChart(_charts[3], timeLabel, data.Mesafe);
 
-            // Chart 5: İniş Hızı
+            
             UpdateChart(_charts[4], timeLabel, data.SicaklikIc);
 
-            // Chart 6: Sıcaklık
+            
             UpdateChart(_charts[5], timeLabel, data.SicaklikDis);
 
-            // Chart 7: Pil Gerilimi
+            
             UpdateChart(_charts[6], timeLabel, data.PilGerilimi);
 
-            // Chart 8: IoT Verileri
+            
             UpdateChart(_charts[7], timeLabel, data.YatayHiz);
         }
 
@@ -84,7 +84,7 @@ namespace MERGEN_KAT3_GCSS
 
         private string FormatTimeLabel(string rawTime)
         {
-            string timePart = rawTime.Contains(",") ? rawTime.Split(',')[1] : rawTime;
+            string timePart = rawTime.Contains(";") ? rawTime.Split(';')[1] : rawTime;
             return timePart.Replace('/', ':');
         }
     }

@@ -87,11 +87,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label27 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.fhApplyButton = new System.Windows.Forms.Button();
             this.labelMag = new System.Windows.Forms.Label();
             this.tbMSalt = new System.Windows.Forms.TextBox();
@@ -185,7 +182,6 @@
             this.pilpanel = new System.Windows.Forms.Panel();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
             this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
@@ -576,11 +572,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label27);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.fhApplyButton);
             this.panel1.Controls.Add(this.labelMag);
             this.panel1.Controls.Add(this.tbMSalt);
@@ -598,17 +591,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(404, 884);
             this.panel1.TabIndex = 7;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label27.Location = new System.Drawing.Point(47, 648);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(271, 24);
-            this.label27.TabIndex = 16;
-            this.label27.Text = "SİNYAL GÜÇ DEĞERİ : -30 dBm";
             // 
             // label12
             // 
@@ -631,28 +613,6 @@
             this.label11.Size = new System.Drawing.Size(262, 24);
             this.label11.TabIndex = 14;
             this.label11.Text = "İNİŞ FREKANSI : 868.125 MHz";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(237, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(119, 24);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "BAĞLI DEĞİL";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label9.Location = new System.Drawing.Point(14, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(187, 24);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "BAĞLANTI DURUMU";
             // 
             // fhApplyButton
             // 
@@ -1698,7 +1658,7 @@
             this.SendMessagebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SendMessagebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendMessagebutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.SendMessagebutton.Location = new System.Drawing.Point(627, 23);
+            this.SendMessagebutton.Location = new System.Drawing.Point(627, 44);
             this.SendMessagebutton.Margin = new System.Windows.Forms.Padding(4);
             this.SendMessagebutton.Name = "SendMessagebutton";
             this.SendMessagebutton.Size = new System.Drawing.Size(28, 24);
@@ -1909,7 +1869,6 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.SendMessagebutton);
             this.groupBox1.Controls.Add(this.camclosebutton);
             this.groupBox1.Controls.Add(this.camopenbutton);
@@ -1945,19 +1904,6 @@
             this.pilpanel.Size = new System.Drawing.Size(1920, 147);
             this.pilpanel.TabIndex = 7;
             // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(627, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 30);
-            this.button1.TabIndex = 18;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // compassControl1
             // 
             this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -1978,14 +1924,14 @@
             // 
             // quarterCircularProgress1
             // 
-            this.quarterCircularProgress1.Angle = 6;
+            this.quarterCircularProgress1.Angle = 27;
             this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "OHB";
+            this.quarterCircularProgress1.CenterText = "AKU";
             this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
             this.quarterCircularProgress1.Name = "quarterCircularProgress1";
             this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
             this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "6°";
+            this.quarterCircularProgress1.ValueLabel = "27°";
             // 
             // batteryProgressBar2
             // 
@@ -2080,11 +2026,8 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button fhApplyButton;
         private System.Windows.Forms.Label labelMag;
         private System.Windows.Forms.TextBox tbMSalt;
@@ -2183,7 +2126,6 @@
         private OpenTK.GLControl glControl1;
         private CompassControl compassControl1;
         public System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Button button1;
     }
 }
 

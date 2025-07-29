@@ -11,7 +11,7 @@ namespace MERGEN_KAT3_GCSS
     public class Charts
     {
         private readonly Chart[] _charts;
-        private const int MAX_POINTS = 100;
+        private const int MAX_POINTS = 500;
 
         public Charts(Chart ch1, Chart ch2, Chart ch3, Chart ch4, Chart ch5, Chart ch6, Chart ch7, Chart ch8)
         {

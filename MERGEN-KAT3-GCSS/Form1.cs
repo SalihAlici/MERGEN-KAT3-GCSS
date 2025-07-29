@@ -232,9 +232,9 @@ namespace MERGEN_KAT3_GCSS
             if (serialPort1.IsOpen)
             {
                 string plainText = textBox1.Text;
-                string encryptedHex = EncryptToHex(plainText);
+               
 
-                string dataToSend = "A," + encryptedHex;  // Başına "A," ekledik
+                string dataToSend = "C," + plainText;  // Başına "A," ekledik
                 serialPort1.WriteLine(dataToSend);       // HEX string olarak gönder
             }
             else
@@ -243,42 +243,9 @@ namespace MERGEN_KAT3_GCSS
             }
         }
 
-        private string EncryptToHex(string plainText)
-        {
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = key;
-                aes.IV = iv;
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
+        
 
-                ICryptoTransform encryptor = aes.CreateEncryptor();
-
-                byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
-                byte[] encryptedBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);
-
-                // HEX string'e dönüştür
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in encryptedBytes)
-                {
-                    sb.AppendFormat("{0:X2}", b); // örn: "AF", "01", "B3"
-                }
-                return sb.ToString();
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (serialPort1.IsOpen)
-            {
-                string plainText = textBox1.Text;
-                serialPort1.WriteLine(plainText);  // Şifrelemeden direkt gönder
-            }
-            else
-            {
-                MessageBox.Show("Seri port açık değil!");
-            }
-        }
+        
 
         private void UpdateLabels()
         {

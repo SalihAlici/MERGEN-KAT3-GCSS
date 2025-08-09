@@ -85,6 +85,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
+            this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
@@ -130,6 +132,7 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.sagpanel = new System.Windows.Forms.TableLayoutPanel();
+            this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.panel4 = new System.Windows.Forms.Panel();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -180,12 +183,10 @@
             this.lSerialConnectButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pilpanel = new System.Windows.Forms.Panel();
+            this.batteryProgressBar2 = new MERGEN_KAT3_GCSS.BatteryProgressBar();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
-            this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
-            this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
-            this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
-            this.batteryProgressBar2 = new MERGEN_KAT3_GCSS.BatteryProgressBar();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -552,6 +553,26 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(469, 89);
             this.textBox2.TabIndex = 15;
+            // 
+            // circularProgress1
+            // 
+            this.circularProgress1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgress1.Location = new System.Drawing.Point(77, 249);
+            this.circularProgress1.Name = "circularProgress1";
+            this.circularProgress1.Padding = new System.Windows.Forms.Padding(5);
+            this.circularProgress1.Size = new System.Drawing.Size(421, 388);
+            this.circularProgress1.TabIndex = 14;
+            // 
+            // quarterCircularProgress1
+            // 
+            this.quarterCircularProgress1.Angle = 72;
+            this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
+            this.quarterCircularProgress1.CenterText = "EPP";
+            this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
+            this.quarterCircularProgress1.Name = "quarterCircularProgress1";
+            this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
+            this.quarterCircularProgress1.TabIndex = 13;
+            this.quarterCircularProgress1.ValueLabel = "72°";
             // 
             // tabPage2
             // 
@@ -1294,6 +1315,15 @@
             this.sagpanel.Size = new System.Drawing.Size(433, 706);
             this.sagpanel.TabIndex = 4;
             // 
+            // compassControl1
+            // 
+            this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.compassControl1.BackColor = System.Drawing.Color.Transparent;
+            this.compassControl1.Location = new System.Drawing.Point(141, 400);
+            this.compassControl1.Name = "compassControl1";
+            this.compassControl1.Size = new System.Drawing.Size(150, 183);
+            this.compassControl1.TabIndex = 3;
+            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1894,6 +1924,7 @@
             // pilpanel
             // 
             this.pilpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.pilpanel.Controls.Add(this.textBox3);
             this.pilpanel.Controls.Add(this.batteryProgressBar2);
             this.pilpanel.Controls.Add(this.groupBox1);
             this.pilpanel.Controls.Add(this.cikisbutton);
@@ -1904,35 +1935,6 @@
             this.pilpanel.Size = new System.Drawing.Size(1920, 147);
             this.pilpanel.TabIndex = 7;
             // 
-            // compassControl1
-            // 
-            this.compassControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.compassControl1.BackColor = System.Drawing.Color.Transparent;
-            this.compassControl1.Location = new System.Drawing.Point(141, 400);
-            this.compassControl1.Name = "compassControl1";
-            this.compassControl1.Size = new System.Drawing.Size(150, 183);
-            this.compassControl1.TabIndex = 3;
-            // 
-            // circularProgress1
-            // 
-            this.circularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.circularProgress1.Location = new System.Drawing.Point(77, 249);
-            this.circularProgress1.Name = "circularProgress1";
-            this.circularProgress1.Padding = new System.Windows.Forms.Padding(5);
-            this.circularProgress1.Size = new System.Drawing.Size(421, 388);
-            this.circularProgress1.TabIndex = 14;
-            // 
-            // quarterCircularProgress1
-            // 
-            this.quarterCircularProgress1.Angle = 27;
-            this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "AKU";
-            this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
-            this.quarterCircularProgress1.Name = "quarterCircularProgress1";
-            this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
-            this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "27°";
-            // 
             // batteryProgressBar2
             // 
             this.batteryProgressBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1942,6 +1944,13 @@
             this.batteryProgressBar2.Percentage = 36;
             this.batteryProgressBar2.Size = new System.Drawing.Size(134, 70);
             this.batteryProgressBar2.TabIndex = 35;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(848, 122);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(167, 22);
+            this.textBox3.TabIndex = 36;
             // 
             // Form1
             // 
@@ -1994,6 +2003,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pilpanel.ResumeLayout(false);
+            this.pilpanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2126,6 +2136,7 @@
         private OpenTK.GLControl glControl1;
         private CompassControl compassControl1;
         public System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

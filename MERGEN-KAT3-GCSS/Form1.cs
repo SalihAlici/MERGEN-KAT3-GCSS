@@ -33,8 +33,8 @@ namespace MERGEN_KAT3_GCSS
         private CancellationTokenSource trackingTokenSource;
         private double motorAzimuth = 0, motorElevation = 0;
 
-        private readonly byte[] key = Encoding.UTF8.GetBytes("1234567890123456"); // 16 byte = AES-128
-        private readonly byte[] iv = Encoding.UTF8.GetBytes("6543210987654321");  // 16 byte IV
+        private static readonly byte[] aesKey = Encoding.UTF8.GetBytes("1234567890ABCDEF"); // 16 karakter
+        private static readonly byte[] aesIV = Encoding.UTF8.GetBytes("FEDCBA0987654321"); // 16 karakter
         public Form1()
         {
             InitializeComponent();
@@ -229,24 +229,133 @@ namespace MERGEN_KAT3_GCSS
 
         private void SendMessagebutton_Click(object sender, EventArgs e)
         {
-            if (serialPort1.IsOpen)
+            if (!serialPort1.IsOpen)
             {
-                string plainText = textBox1.Text;
-               
-
-                string dataToSend = "A," + plainText;  // Başına "A," ekledik
-                serialPort1.WriteLine(dataToSend);       // HEX string olarak gönder
+                MessageBox.Show("Serial port açık değil!");
+                return;
             }
-            else
+
+            string plainText = textBox1.Text.Trim();
+
+            if (string.IsNullOrEmpty(plainText))
             {
-                MessageBox.Show("Seri port açık değil!");
+                MessageBox.Show("Gönderilecek metin boş!");
+                return;
+            }
+
+            try
+            {
+                // AES ile şifrele
+                byte[] encrypted = EncryptAES(plainText, aesKey, aesIV);
+
+                // HEX string'e çevir
+                string hexString = BitConverter.ToString(encrypted).Replace("-", "");
+
+                // Başına "A," ekle
+                string finalData = "A," + hexString;
+
+                // Seri porttan gönder
+                serialPort1.Write(finalData);
+
+                MessageBox.Show("Şifrelenmiş veri gönderildi:\n" + finalData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
             }
         }
 
-        
+        private byte[] EncryptAES(string plainText, byte[] key, byte[] iv)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = key;
+                aesAlg.IV = iv;
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.PKCS7;
 
-        
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
+                using (MemoryStream msEncrypt = new MemoryStream())
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                {
+                    swEncrypt.Write(plainText);
+                    swEncrypt.Flush();
+                    csEncrypt.FlushFinalBlock();
+                    return msEncrypt.ToArray();
+                }
+            }
+        }
+
+        public void HandleNewTelemetryData(TelemetryData telemetry)
+        {
+            if (string.IsNullOrWhiteSpace(telemetry.Mesaj))
+            {
+                // Boş mesaj varsa şifre çözmeye çalışma
+                return;
+            }
+
+            string decryptedMessage = DecryptMesaj(telemetry.Mesaj);
+            if (string.IsNullOrEmpty(decryptedMessage))
+            {
+                // Şifre çözme başarısızsa veya boşsa işlem yapma
+                return;
+            }
+
+            // Burada decryptedMessage güvenle kullanılabilir
+            textBox3.Text=decryptedMessage;
+        }
+        private string DecryptMesaj(string encryptedMessage)
+        {
+            if (string.IsNullOrWhiteSpace(encryptedMessage))
+                return null;  // veya string.Empty, hiç işlem yapma
+
+            string hexData = encryptedMessage;
+
+            if (string.IsNullOrWhiteSpace(hexData))
+                return null;
+
+            try
+            {
+                byte[] encryptedBytes = HexStringToByteArray(hexData);
+                return DecryptAES(encryptedBytes, aesKey, aesIV);
+            }
+            catch
+            {
+                // İstersen hata logla ama dışarı hata fırlatma
+                return null;
+            }
+        }
+
+
+        private byte[] HexStringToByteArray(string hex)
+        {
+            int length = hex.Length;
+            byte[] bytes = new byte[length / 2];
+            for (int i = 0; i < length; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
+        }
+
+        private string DecryptAES(byte[] cipherText, byte[] key, byte[] iv)
+        {
+            using (var aes = System.Security.Cryptography.Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = System.Security.Cryptography.CipherMode.CBC;
+                aes.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
+
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                using (var ms = new System.IO.MemoryStream(cipherText))
+                using (var cs = new System.Security.Cryptography.CryptoStream(ms, decryptor, System.Security.Cryptography.CryptoStreamMode.Read))
+                using (var sr = new System.IO.StreamReader(cs))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+        }
         private void UpdateLabels()
         {
             labelAntennaAzimuth.Text = "Azimuth: " + motorAzimuth.ToString("0.###", CultureInfo.InvariantCulture);

@@ -117,6 +117,7 @@ namespace MERGEN_KAT3_GCSS
                         _charts.Update(telemetry);
                         _dataGridHandler.AddTelemetry(telemetry);
                         _aras.Update(telemetry.HataKodu);
+                        _form.HandleNewTelemetryData(telemetry);
                         // Sadece 0. sekme görünürken güncelle
                         if (index == 0)
                         {

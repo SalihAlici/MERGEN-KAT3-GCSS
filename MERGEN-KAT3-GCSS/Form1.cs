@@ -229,7 +229,7 @@ namespace MERGEN_KAT3_GCSS
 
         private void SendMessagebutton_Click(object sender, EventArgs e)
         {
-            if (!serialPort1.IsOpen)
+            if (dataHandler == null || !serialPort1.IsOpen)
             {
                 MessageBox.Show("Serial port açık değil!");
                 return;
@@ -254,8 +254,8 @@ namespace MERGEN_KAT3_GCSS
                 // Başına "A," ekle
                 string finalData = "A," + hexString;
 
-                // Seri porttan gönder
-                serialPort1.Write(finalData);
+                // Data sınıfının thread-safe gönderme metodunu kullan
+                dataHandler.SendCommand(finalData);
 
                 MessageBox.Show("Şifrelenmiş veri gönderildi:\n" + finalData);
             }

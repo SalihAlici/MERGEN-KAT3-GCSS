@@ -22,7 +22,7 @@ namespace MERGEN_KAT3_GCSS
         private readonly List<PointLatLng> _pathPoints = new List<PointLatLng>();
         private bool _disposed = false;
         private bool _isFirstValidPosition = true;
-        private PointLatLng? _lastValidPosition = null; // Nullable olarak tanımlandı
+        private PointLatLng? _lastValidPosition = null;
         private const double MovementThreshold = 0.00001;
 
         public Map(GMapControl control)
@@ -41,56 +41,43 @@ namespace MERGEN_KAT3_GCSS
 
         public void InitializeMap()
         {
-            if (_gMapControl.InvokeRequired)
+            _gMapControl.MapProvider = GMapProviders.OpenStreetMap;
+            _gMapControl.MinZoom = 5;
+            _gMapControl.MaxZoom = 25;
+            _gMapControl.Zoom = 16;
+            _gMapControl.ShowCenter = false;
+
+            _gMapControl.Overlays.Clear();
+
+            var markersOverlay = new GMapOverlay("markers");
+
+            _startMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.blue_dot)
             {
-                _gMapControl.Invoke((MethodInvoker)InitializeMap);
-                return;
-            }
+                IsHitTestVisible = false,
+                IsVisible = false,
+                ToolTipText = "Başlangıç Noktası"
+            };
+            markersOverlay.Markers.Add(_startMarker);
 
-            try
+            _currentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot)
             {
-                _gMapControl.MapProvider = GMapProviders.OpenStreetMap;
-                _gMapControl.MinZoom = 5;
-                _gMapControl.MaxZoom = 25;
-                _gMapControl.Zoom = 16;
-                _gMapControl.ShowCenter = false;
+                IsHitTestVisible = false,
+                IsVisible = false,
+                ToolTipText = "Güncel Konum"
+            };
+            markersOverlay.Markers.Add(_currentMarker);
 
-                _gMapControl.Overlays.Clear();
+            _gMapControl.Overlays.Add(markersOverlay);
 
-                var markersOverlay = new GMapOverlay("markers");
-
-                _startMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.blue_dot)
-                {
-                    IsHitTestVisible = false,
-                    IsVisible = false,
-                    ToolTipText = "Başlangıç Noktası"
-                };
-                markersOverlay.Markers.Add(_startMarker);
-
-                _currentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot)
-                {
-                    IsHitTestVisible = false,
-                    IsVisible = false,
-                    ToolTipText = "Güncel Konum"
-                };
-                markersOverlay.Markers.Add(_currentMarker);
-
-                _gMapControl.Overlays.Add(markersOverlay);
-
-                _routesOverlay = new GMapOverlay("routes");
-                _route = new GMapRoute(_pathPoints, "path")
-                {
-                    Stroke = new Pen(Color.Red, 3)
-                };
-                _routesOverlay.Routes.Add(_route);
-                _gMapControl.Overlays.Add(_routesOverlay);
-
-                _gMapControl.Refresh();
-            }
-            catch (Exception ex)
+            _routesOverlay = new GMapOverlay("routes");
+            _route = new GMapRoute(_pathPoints, "path")
             {
-                MessageBox.Show($"Harita başlatma hatası: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                Stroke = new Pen(Color.Red, 3)
+            };
+            _routesOverlay.Routes.Add(_route);
+            _gMapControl.Overlays.Add(_routesOverlay);
+
+            _gMapControl.Refresh();
         }
 
         public void UpdatePosition(TelemetryData telemetry)
@@ -100,9 +87,6 @@ namespace MERGEN_KAT3_GCSS
 
             if (IsInvalidCoordinate(telemetry.Gps1Latitude, telemetry.Gps1Longitude))
             {
-               // Console.WriteLine("Geçersiz koordinat - Son geçerli konum kullanılıyor");
-
-                // Null kontrolü ile son geçerli konumu kullan
                 if (_lastValidPosition.HasValue)
                 {
                     _currentMarker.Position = _lastValidPosition.Value;
@@ -114,35 +98,28 @@ namespace MERGEN_KAT3_GCSS
             var newPosition = new PointLatLng(telemetry.Gps1Latitude, telemetry.Gps1Longitude);
             _lastValidPosition = newPosition;
 
-            if (_gMapControl.InvokeRequired)
+            if (_isFirstValidPosition)
             {
-                _gMapControl.BeginInvoke((MethodInvoker)(() => UpdatePosition(telemetry)));
+                _startMarker.Position = newPosition;
+                _startMarker.IsVisible = true;
+                _currentMarker.IsVisible = true;
+                _isFirstValidPosition = false;
+                _gMapControl.Position = newPosition;
             }
-            else
+
+            _currentMarker.Position = newPosition;
+            _pathPoints.Add(newPosition);
+
+            _routesOverlay.Routes.Clear();
+            _route = new GMapRoute(new List<PointLatLng>(_pathPoints), "path")
             {
-                if (_isFirstValidPosition)
-                {
-                    _startMarker.Position = newPosition;
-                    _startMarker.IsVisible = true;
-                    _currentMarker.IsVisible = true;
-                    _isFirstValidPosition = false;
-                    _gMapControl.Position = newPosition;
-                }
+                Stroke = new Pen(Color.Red, 3)
+            };
+            _routesOverlay.Routes.Add(_route);
 
-                _currentMarker.Position = newPosition;
-                _pathPoints.Add(newPosition);
-
-                _routesOverlay.Routes.Clear();
-                _route = new GMapRoute(new List<PointLatLng>(_pathPoints), "path")
-                {
-                    Stroke = new Pen(Color.Red, 3)
-                };
-                _routesOverlay.Routes.Add(_route);
-
-                _gMapControl.UpdateRouteLocalPosition(_route);
-                _gMapControl.UpdateMarkerLocalPosition(_startMarker);
-                _gMapControl.UpdateMarkerLocalPosition(_currentMarker);
-            }
+            _gMapControl.UpdateRouteLocalPosition(_route);
+            _gMapControl.UpdateMarkerLocalPosition(_startMarker);
+            _gMapControl.UpdateMarkerLocalPosition(_currentMarker);
         }
 
         private bool IsInvalidCoordinate(double lat, double lng)
@@ -157,27 +134,20 @@ namespace MERGEN_KAT3_GCSS
             if (_disposed || !_gMapControl.IsHandleCreated)
                 return;
 
-            if (_gMapControl.InvokeRequired)
+            _pathPoints.Clear();
+            _routesOverlay.Routes.Clear();
+            _route = new GMapRoute(new List<PointLatLng>(), "path")
             {
-                _gMapControl.Invoke((MethodInvoker)ClearPath);
-            }
-            else
-            {
-                _pathPoints.Clear();
-                _routesOverlay.Routes.Clear();
-                _route = new GMapRoute(new List<PointLatLng>(), "path")
-                {
-                    Stroke = new Pen(Color.Red, 3)
-                };
-                _routesOverlay.Routes.Add(_route);
+                Stroke = new Pen(Color.Red, 3)
+            };
+            _routesOverlay.Routes.Add(_route);
 
-                _startMarker.IsVisible = false;
-                _currentMarker.IsVisible = false;
-                _isFirstValidPosition = true;
-                _lastValidPosition = null;
+            _startMarker.IsVisible = false;
+            _currentMarker.IsVisible = false;
+            _isFirstValidPosition = true;
+            _lastValidPosition = null;
 
-                _gMapControl.UpdateRouteLocalPosition(_route);
-            }
+            _gMapControl.UpdateRouteLocalPosition(_route);
         }
 
         public void Dispose()
@@ -198,4 +168,5 @@ namespace MERGEN_KAT3_GCSS
             }
         }
     }
+
 }

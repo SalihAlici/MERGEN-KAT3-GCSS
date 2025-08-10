@@ -17,10 +17,8 @@ namespace MERGEN_KAT3_GCSS
         {
             _charts = new[] { ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8 };
 
-            // Chart optimizasyonları
             foreach (var chart in _charts)
             {
-                // Double buffering
                 typeof(Chart).GetProperty("DoubleBuffered",
                     System.Reflection.BindingFlags.Instance |
                     System.Reflection.BindingFlags.NonPublic)?
@@ -28,7 +26,6 @@ namespace MERGEN_KAT3_GCSS
 
                 foreach (var series in chart.Series)
                 {
-                    
                     series.BorderWidth = 1;
                 }
             }
@@ -36,36 +33,15 @@ namespace MERGEN_KAT3_GCSS
 
         public void Update(TelemetryData data)
         {
-            if (_charts[0].InvokeRequired)
-            {
-                _charts[0].BeginInvoke((MethodInvoker)(() => Update(data)));
-                return;
-            }
-
             string timeLabel = FormatTimeLabel(data.GondermeSaati);
 
-         
             UpdateChart(_charts[0], timeLabel, data.Basinc);
-
-           
             UpdateChart(_charts[1], timeLabel, data.Yukseklik);
-
-            
             UpdateChart(_charts[2], timeLabel, data.DikeyHiz);
-
-            
             UpdateChart(_charts[3], timeLabel, data.Mesafe);
-
-            
             UpdateChart(_charts[4], timeLabel, data.SicaklikIc);
-
-            
             UpdateChart(_charts[5], timeLabel, data.SicaklikDis);
-
-            
             UpdateChart(_charts[6], timeLabel, data.PilGerilimi);
-
-            
             UpdateChart(_charts[7], timeLabel, data.YatayHiz);
         }
 
@@ -84,8 +60,9 @@ namespace MERGEN_KAT3_GCSS
 
         private string FormatTimeLabel(string rawTime)
         {
-            string timePart = rawTime.Contains(";") ? rawTime.Split(';')[1] : rawTime;
+            string timePart = rawTime.Contains(",") ? rawTime.Split(',')[1] : rawTime;
             return timePart.Replace('/', ':');
         }
     }
+
 }

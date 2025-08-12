@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MERGEN_KAT3_GCSS
 {
@@ -78,41 +79,93 @@ namespace MERGEN_KAT3_GCSS
                 {
                     if (_port != null && _port.IsOpen && _port.BytesToRead > 0)
                     {
+                        string incomingData;
                         lock (_serialLock)
                         {
-                            // Gelen tüm mevcut veriyi oku ve buffer'a ekle
-                            _serialBuffer += _port.ReadExisting();
+                            incomingData = _port.ReadExisting();
                         }
 
-                        int startIndex, endIndex;
-                        // Buffer'da tam paket var mı kontrol et
-                        while ((startIndex = _serialBuffer.IndexOf('$')) != -1 &&
-                               (endIndex = _serialBuffer.IndexOf('#', startIndex)) != -1)
+                        if (!string.IsNullOrEmpty(incomingData))
                         {
-                            // Başlangıç ve bitiş arasındaki paketi al (baş ve son karakter hariç)
-                            string packet = _serialBuffer.Substring(startIndex + 1, endIndex - startIndex - 1).Trim();
+                            _serialBuffer += incomingData;
+                            Console.WriteLine("[Ham Veri] " + incomingData);
 
-                            // İşlenen kısmı buffer'dan çıkar
-                            _serialBuffer = _serialBuffer.Substring(endIndex + 1);
+                            // Foto paketlerini çıkart (isteğe bağlı)
+                            int photoStart, photoEnd;
+                            while ((photoStart = _serialBuffer.IndexOf('<')) != -1 &&
+                                   (photoEnd = _serialBuffer.IndexOf('>', photoStart)) != -1)
+                            {
+                                string photoPacket = _serialBuffer.Substring(photoStart, photoEnd - photoStart + 1);
+                                _serialBuffer = _serialBuffer.Remove(photoStart, photoEnd - photoStart + 1);
 
-                            Console.WriteLine($"[Tam Paket Çıkarıldı] {packet}");
+                                SavePhotoPacketToTxt(photoPacket);
+                            }
 
-                            // Telemetri verisini parse et ve kuyruğa ekle
-                            if (TelemetryData.TryParse(packet, out var telemetry))
-                                _processingQueue.Add(telemetry);
-                            else
-                                Console.WriteLine("[Parse Hatası] Paket parse edilemedi.");
-                        }
+                            // TELEMETRİ paketlerini döngü ile işle
+                            while (true)
+                            {
+                                int startIndex = _serialBuffer.IndexOf('$');
+                                int endIndex = _serialBuffer.IndexOf('#');
 
-                        // Çok büyük buffer temizleme (ör: 10k karakter üstü)
-                        if (_serialBuffer.Length > 10000)
-                        {
-                            Console.WriteLine("[UYARI] Buffer büyüdü, temizleniyor.");
-                            _serialBuffer = "";
+                                // Paket başlangıcı veya bitişi yoksa ya da bitiş, başlangıçtan önceyse buffer’ı temizle (yanlış veri)
+                                if (startIndex == -1 && endIndex == -1)
+                                {
+                                    // Hiç paket yoksa buffer'ı boşalt (bozuk veri)
+                                    if (_serialBuffer.Length > 0)
+                                    {
+                                        Console.WriteLine("[UYARI] Buffer'da paket işaretçisi yok, temizleniyor.");
+                                        _serialBuffer = "";
+                                    }
+                                    break; // Döngüyü kır, yeni veri bekle
+                                }
+                                else if (startIndex == -1 && endIndex != -1)
+                                {
+                                    // Başlangıç işareti yok ama bitiş var, buffer'ı bitişe kadar at
+                                    _serialBuffer = _serialBuffer.Substring(endIndex + 1);
+                                    continue; // Yeni buffer ile tekrar dene
+                                }
+                                else if (startIndex != -1 && (endIndex == -1 || endIndex < startIndex))
+                                {
+                                    // Başlangıç var ama bitiş yok ya da bitiş başlangıçtan önce, bekle (tam paket gelmemiş)
+                                    // Ancak buffer çok büyürse temizle
+                                    if (_serialBuffer.Length > 5000)
+                                    {
+                                        Console.WriteLine("[UYARI] Buffer çok büyüdü, temizleniyor.");
+                                        _serialBuffer = "";
+                                    }
+                                    break; // Döngü kır, yeni veri bekle
+                                }
+                                else if (startIndex != -1 && endIndex > startIndex)
+                                {
+                                    // Tam paket bulundu, işle
+                                    string packet = _serialBuffer.Substring(startIndex + 1, endIndex - startIndex - 1).Trim();
+
+                                    // Paket parse edilebilir mi kontrol et
+                                    if (TelemetryData.TryParse(packet, out var telemetry))
+                                    {
+                                        _processingQueue.Add(telemetry);
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("[Parse Hatası] Paket parse edilemedi, atılıyor: " + packet);
+                                    }
+
+                                    // İşlenen ya da atılan paketi buffer’dan çıkar
+                                    _serialBuffer = _serialBuffer.Substring(endIndex + 1);
+                                    continue; // Yeni buffer ile devam et
+                                }
+                                else
+                                {
+                                    // Diğer durumlarda buffer’ı temizle (güvenlik için)
+                                    Console.WriteLine("[UYARI] Bilinmeyen buffer durumu, temizleniyor.");
+                                    _serialBuffer = "";
+                                    break;
+                                }
+                            }
                         }
                     }
 
-                    Thread.Sleep(5); // CPU yükünü azalt
+                    Thread.Sleep(5);
                 }
                 catch (Exception ex)
                 {
@@ -121,6 +174,37 @@ namespace MERGEN_KAT3_GCSS
                 }
             }
         }
+
+
+        // 📂 FOTO PAKETİNİ TXT'YE KAYDET
+        private void SavePhotoPacketToTxt(string rawPacket)
+        {
+            try
+            {
+                // < ve > işaretlerini temizle
+                string clean = rawPacket.Trim('<', '>');
+                int commaIndex = clean.IndexOf(',');
+                if (commaIndex == -1) return;
+
+                string packetNumber = clean.Substring(0, commaIndex);
+                string photoHex = clean.Substring(commaIndex + 1);
+
+                // Masaüstü yolu al
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string filePath = Path.Combine(desktopPath, "photo_data.txt");
+
+                // Dosyaya ekle
+                File.AppendAllText(filePath, photoHex);
+
+                Console.WriteLine($"[Foto Paket #{packetNumber}] Masaüstüne kaydedildi: {filePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"TXT kaydetme hatası: {ex.Message}");
+            }
+        }
+
+
 
         private void ProcessData()
         {

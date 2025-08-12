@@ -183,6 +183,8 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialPort2 = new System.IO.Ports.SerialPort(this.components);
+            this.photobutton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.compassControl1 = new MERGEN_KAT3_GCSS.CompassControl();
             this.circularProgress1 = new MERGEN_KAT3_GCSS.CircularProgress();
             this.quarterCircularProgress1 = new MERGEN_KAT3_GCSS.QuarterCircularProgress();
@@ -1659,7 +1661,7 @@
             this.SendMessagebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SendMessagebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SendMessagebutton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.SendMessagebutton.Location = new System.Drawing.Point(627, 44);
+            this.SendMessagebutton.Location = new System.Drawing.Point(627, 23);
             this.SendMessagebutton.Margin = new System.Windows.Forms.Padding(4);
             this.SendMessagebutton.Name = "SendMessagebutton";
             this.SendMessagebutton.Size = new System.Drawing.Size(28, 24);
@@ -1679,6 +1681,7 @@
             this.camclosebutton.Size = new System.Drawing.Size(38, 38);
             this.camclosebutton.TabIndex = 13;
             this.camclosebutton.UseVisualStyleBackColor = true;
+            this.camclosebutton.Click += new System.EventHandler(this.camclosebutton_Click);
             // 
             // camopenbutton
             // 
@@ -1692,6 +1695,7 @@
             this.camopenbutton.Size = new System.Drawing.Size(38, 38);
             this.camopenbutton.TabIndex = 14;
             this.camopenbutton.UseVisualStyleBackColor = true;
+            this.camopenbutton.Click += new System.EventHandler(this.camopenbutton_Click);
             // 
             // label15
             // 
@@ -1870,6 +1874,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.photobutton);
             this.groupBox1.Controls.Add(this.SendMessagebutton);
             this.groupBox1.Controls.Add(this.camclosebutton);
             this.groupBox1.Controls.Add(this.camopenbutton);
@@ -1908,6 +1914,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox3.Location = new System.Drawing.Point(848, 122);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(167, 22);
@@ -1917,6 +1924,31 @@
             // 
             this.serialPort1.ReadTimeout = 500;
             this.serialPort1.WriteTimeout = 500;
+            // 
+            // photobutton
+            // 
+            this.photobutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("photobutton.BackgroundImage")));
+            this.photobutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.photobutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.photobutton.Location = new System.Drawing.Point(1093, -1);
+            this.photobutton.Name = "photobutton";
+            this.photobutton.Size = new System.Drawing.Size(38, 38);
+            this.photobutton.TabIndex = 18;
+            this.photobutton.UseVisualStyleBackColor = true;
+            this.photobutton.Click += new System.EventHandler(this.photobutton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(626, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 24);
+            this.button1.TabIndex = 19;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // compassControl1
             // 
@@ -1938,14 +1970,14 @@
             // 
             // quarterCircularProgress1
             // 
-            this.quarterCircularProgress1.Angle = 8;
+            this.quarterCircularProgress1.Angle = 71;
             this.quarterCircularProgress1.BackColor = System.Drawing.Color.Transparent;
-            this.quarterCircularProgress1.CenterText = "PYF";
+            this.quarterCircularProgress1.CenterText = "YQN";
             this.quarterCircularProgress1.Location = new System.Drawing.Point(519, 287);
             this.quarterCircularProgress1.Name = "quarterCircularProgress1";
             this.quarterCircularProgress1.Size = new System.Drawing.Size(480, 480);
             this.quarterCircularProgress1.TabIndex = 13;
-            this.quarterCircularProgress1.ValueLabel = "8°";
+            this.quarterCircularProgress1.ValueLabel = "71°";
             // 
             // batteryProgressBar2
             // 
@@ -2142,6 +2174,8 @@
         private CompassControl compassControl1;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button photobutton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

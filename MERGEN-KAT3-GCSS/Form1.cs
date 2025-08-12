@@ -356,6 +356,79 @@ namespace MERGEN_KAT3_GCSS
                 }
             }
         }
+
+        private void camopenbutton_Click(object sender, EventArgs e)
+        {
+            if (dataHandler == null)
+            {
+                MessageBox.Show("Veri bağlantısı kurulmamış!");
+                return;
+            }
+
+            // Serial port üzerinden "D,0" gönder
+            dataHandler.SendCommand("D,0");
+            Console.WriteLine("Kamera açma komutu gönderildi: D,0");
+        }
+
+        private void camclosebutton_Click(object sender, EventArgs e)
+        {
+
+            if (dataHandler == null)
+            {
+                MessageBox.Show("Veri bağlantısı kurulmamış!");
+                return;
+            }
+
+            // Serial port üzerinden "E,0" gönder
+            dataHandler.SendCommand("E,0");
+            Console.WriteLine("Kamera kapatma komutu gönderildi: E,0");
+        }
+
+        private void photobutton_Click(object sender, EventArgs e)
+        {
+            if (dataHandler == null)
+            {
+                MessageBox.Show("Veri bağlantısı kurulmamış!");
+                return;
+            }
+
+            // Serial port üzerinden "B,0" gönder
+            dataHandler.SendCommand("B,0");
+            Console.WriteLine("Fotograf komutu gönderildi: E,0");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataHandler == null || !serialPort1.IsOpen)
+            {
+                MessageBox.Show("Serial port açık değil!");
+                return;
+            }
+
+            string plainText = textBox1.Text.Trim();
+
+            if (string.IsNullOrEmpty(plainText))
+            {
+                MessageBox.Show("Gönderilecek metin boş!");
+                return;
+            }
+
+            try
+            {
+                // Başına "C," ekle
+                string finalData = "C," + plainText;
+
+                // Data sınıfının thread-safe gönderme metodunu kullan
+                dataHandler.SendCommand(finalData);
+
+              //  MessageBox.Show("Şifresiz veri gönderildi:\n" + finalData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+        }
+
         private void UpdateLabels()
         {
             labelAntennaAzimuth.Text = "Azimuth: " + motorAzimuth.ToString("0.###", CultureInfo.InvariantCulture);

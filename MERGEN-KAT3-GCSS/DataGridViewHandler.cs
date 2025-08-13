@@ -74,12 +74,12 @@ namespace MERGEN_KAT3_GCSS
                     if (!File.Exists(_csvFilePath))
                     {
                         File.WriteAllText(_csvFilePath,
-                            string.Join(";", props.Select(p => p.Name)) + Environment.NewLine,
+                            string.Join(",", props.Select(p => p.Name)) + Environment.NewLine,
                             Encoding.UTF8);
                     }
 
                     File.AppendAllText(_csvFilePath,
-                        string.Join(";", props.Select(p => p.GetValue(data)?.ToString() ?? "")) + Environment.NewLine,
+                        string.Join(",", props.Select(p => p.GetValue(data)?.ToString() ?? "")) + Environment.NewLine,
                         Encoding.UTF8);
                 }
                 catch (Exception ex)

@@ -60,7 +60,7 @@ namespace MERGEN_KAT3_GCSS
 
         private string FormatTimeLabel(string rawTime)
         {
-            string timePart = rawTime.Contains(",") ? rawTime.Split(',')[1] : rawTime;
+            string timePart = rawTime.Contains(";") ? rawTime.Split(';')[1] : rawTime;
             return timePart.Replace('/', ':');
         }
     }

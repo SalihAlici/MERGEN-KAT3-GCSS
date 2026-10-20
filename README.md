@@ -1,95 +1,95 @@
 # MERGEN-KAT3-GCSS
 
-MERGEN takımının model uydusu için yer istasyonu ve anten takip yazılımı. Uydudan gelen telemetriyi gösterir ve kaydeder. Uydunun ve yer istasyonunun GPS konumlarından anten açılarını hesaplar ve yer istasyonu antenini motorlarla uyduya çevirir. Uyduyla şifreli mesajlaşmayı ve uydudan gelen fotoğraf paketlerini alır.
+Ground station and antenna tracking software for a model satellite. It displays and logs telemetry received from the satellite, computes antenna angles from the GPS positions of the satellite and the ground station, and points the ground station antenna at the satellite with motors. It also handles encrypted messaging with the satellite and receives photo packets.
 
-C# ve Windows Forms (.NET Framework 4.7.2) ile yazılmıştır.
+Written in C# with Windows Forms (.NET Framework 4.7.2). The user interface is in Turkish.
 
-> **Güncel sürüm [`QR`](../../tree/QR) branch'indedir.** `master` branch'i projenin ilk arayüz tasarımını içerir. Aşağıdaki özellikler `QR` branch'indeki son sürümü anlatır.
+> **The latest version is in the [`QR`](../../tree/QR) branch.** The `master` branch contains the first interface design. The features below describe the latest version in `QR`.
 
-![Uydu sekmesi](docs/uydu_sekmesi.png)
-*Uydu sekmesi: telemetri grafikleri, harita, 3B model, pusula ve tablo. Görüntülerdeki değerler örnek veridir.*
+![Satellite tab](docs/uydu_sekmesi.png)
+*Satellite tab: telemetry charts, map, 3D model, compass and data table. Values shown are sample data.*
 
-![Anten sekmesi](docs/anten_sekmesi.png)
-*Anten sekmesi: yer istasyonu ve uydu konumları, RSSI göstergeleri, takip ve elle kontrol.*
+![Antenna tab](docs/anten_sekmesi.png)
+*Antenna tab: ground station and satellite positions, RSSI indicators, tracking and manual control.*
 
-## Özellikler
+## Features
 
-- **İki seri port (9600 baud):**
-  - Biri telemetri ve haberleşme, diğeri anten motor sürücüsü için.
-  - Okuma ve işleme ayrı iş parçacıklarında çalışır.
-  - Telemetri paketleri `$ ... #`, fotoğraf paketleri `< ... >` arasındadır. Bozuk paketler atılır.
-- **Telemetri (25 alan):**
-  - Paket numarası, uydu statüsü, hata kodu, gönderme saati.
-  - Basınç, yükseklik, dikey ve yatay hız, mesafe.
-  - İç ve dış sıcaklık, pil gerilimi ve pil yüzdesi.
-  - Uydu GPS'i, pitch / roll / yaw, dönme açısı.
-  - Mesaj, takım no, yer istasyonu GPS'i.
-- **Grafikler, tablo ve kayıt:**
-  - 8 zaman grafiği.
-  - Her paket tabloya eklenir ve masaüstündeki `TELEMETRİ-KAT3.csv` dosyasına yazılır.
-- **Harita:** GMap.NET + OpenStreetMap. Uydunun konumu ve izlediği yol çizilir.
-- **3B simülasyon:** OpenTK ile uydu ve paraşüt modeli gelen açılarla döner.
-- **Anten takibi:**
-  - **Hesap:** iki GPS konumundan yatay ve dikey mesafe, azimut ve elevasyon hesaplanır (`AngleCalculator`).
-  - **Otomatik takip:** "Start Tracking!" ile başlar; açılar her saniye `azimut,elevasyon` biçiminde motor sürücüsüne gönderilir.
-  - **Elle kontrol:** yön düğmeleriyle azimut (0–360°) ve elevasyon (0–180°) adım adım değiştirilir, "home" komutuyla başlangıca dönülür.
-  - **Takip modları:** arayüzde GPS, RSSI ve Hybrid takip seçenekleri bulunur.
-- **Haberleşme:**
-  - İki yer istasyonu modülü; çıkış frekansı 865,125 MHz, iniş frekansı 868,125 MHz.
-  - Azimut ve elevasyon için RSSI göstergeleri.
-- **Şifreli mesaj:** uyduya gönderilen mesaj AES ile şifrelenip `A,<hex>` biçiminde gönderilir; uydudan gelen şifreli mesaj çözülüp gösterilir.
-- **Fotoğraf alma:** `<paket_no,hex_veri>` paketleri masaüstündeki `photo_data.txt` dosyasına eklenir.
-- **ARAS (arıza tespit) göstergesi:** hata kodunun bitleri ışıklarla gösterilir.
+- **Two serial ports (9600 baud):**
+  - One for telemetry and communication, one for the antenna motor controller.
+  - Reading and processing run on separate threads.
+  - Telemetry packets are framed as `$ ... #`, photo packets as `< ... >`. Corrupt packets are discarded.
+- **Telemetry (25 fields):**
+  - Packet number, satellite status, error code, transmission time.
+  - Pressure, altitude, vertical and horizontal speed, distance.
+  - Internal and external temperature, battery voltage and battery percentage.
+  - Satellite GPS, pitch / roll / yaw, rotation angle.
+  - Message, team number, ground station GPS.
+- **Charts, table and logging:**
+  - 8 time charts.
+  - Every packet is added to the data table and appended to `TELEMETRİ-KAT3.csv` on the desktop.
+- **Map:** GMap.NET + OpenStreetMap; the satellite position and its track are drawn.
+- **3D simulation:** a satellite and parachute model rotates with the received angles (OpenTK).
+- **Antenna tracking:**
+  - **Geometry:** horizontal and vertical distance, azimuth and elevation are computed from the two GPS positions (`AngleCalculator`).
+  - **Automatic tracking:** started with "Start Tracking!"; angles are sent to the motor controller every second as `azimuth,elevation`.
+  - **Manual control:** direction buttons step the azimuth (0–360°) and elevation (0–180°); a "home" command returns to the start position.
+  - **Tracking modes:** the interface offers GPS, RSSI and Hybrid tracking options.
+- **Communication:**
+  - Two ground station modules; uplink 865.125 MHz, downlink 868.125 MHz.
+  - RSSI indicators for azimuth and elevation.
+- **Encrypted messages:** messages to the satellite are AES-encrypted and sent as `A,<hex>`; encrypted messages from the satellite are decrypted and displayed.
+- **Photo reception:** `<packet_no,hex_data>` packets are appended to `photo_data.txt` on the desktop.
+- **ARAS (fault detection) indicator:** error-code bits are shown as lights.
 
-## Telemetri biçimi
+## Telemetry format
 
 ```
-$paket*statü*hata_kodu*saat*basınç*yükseklik*dikey_hız*mesafe*yatay_hız*sıcaklık_iç*sıcaklık_dış*pil*pil_yüzde*
- gps1_enlem*gps1_boylam*gps1_yükseklik*pitch*roll*yaw*dönme_açısı*mesaj*takım_no*gps2_enlem*gps2_boylam*gps2_yükseklik#
+$packet*status*error_code*time*pressure*altitude*vertical_speed*distance*horizontal_speed*temp_internal*temp_external*battery*battery_pct*
+ gps1_lat*gps1_lon*gps1_alt*pitch*roll*yaw*rotation_angle*message*team_no*gps2_lat*gps2_lon*gps2_alt#
 ```
 
-`gps1` uydunun, `gps2` yer istasyonunun konumudur. Ondalık ayırıcı noktadır.
+`gps1` is the satellite position and `gps2` is the ground station position. The decimal separator is a dot.
 
-## Dosyalar
+## Files
 
-| Dosya | İçerik |
+| File | Contents |
 |---|---|
-| `Form1.cs` | Ana pencere, portlar, takip ve elle kontrol düğmeleri, AES şifreleme |
-| `Data.cs` | Seri port okuma, telemetri ve fotoğraf paketlerini ayırma, komut gönderme |
-| `TelemetryData.cs` | Paket ayrıştırıcı |
-| `AngleCalculator.cs` | GPS konumlarından azimut ve elevasyon hesabı |
-| `AntennaController.cs` | Motor komutları, otomatik takip döngüsü |
-| `Charts.cs`, `DataGridViewHandler.cs` | Grafikler, tablo ve CSV kaydı |
-| `Map.cs`, `_3DSimulation.cs` | Harita ve 3B model |
-| `Aras.cs` | Hata kodu göstergesi |
-| `CompassControl.cs`, `CircularProgress.cs`, `QuarterCircularProgress.cs`, `BatteryProgressBar.cs` | Özel göstergeler |
+| `Form1.cs` | Main window, ports, tracking and manual control buttons, AES encryption |
+| `Data.cs` | Serial reading, telemetry and photo packet framing, sending commands |
+| `TelemetryData.cs` | Packet parser |
+| `AngleCalculator.cs` | Azimuth and elevation from GPS positions |
+| `AntennaController.cs` | Motor commands, automatic tracking loop |
+| `Charts.cs`, `DataGridViewHandler.cs` | Charts, data table and CSV logging |
+| `Map.cs`, `_3DSimulation.cs` | Map and 3D model |
+| `Aras.cs` | Error-code indicator |
+| `CompassControl.cs`, `CircularProgress.cs`, `QuarterCircularProgress.cs`, `BatteryProgressBar.cs` | Custom gauges |
 
-## Kurulum ve çalıştırma
+## Build and run
 
-**Gerekenler:**
+**Requirements:**
 - Windows 10 / 11
-- Visual Studio 2019 ya da 2022, ".NET masaüstü geliştirme" iş yüküyle (.NET Framework 4.7.2 dahil)
-- Harita için internet bağlantısı
+- Visual Studio 2019 or 2022 with the ".NET desktop development" workload (including .NET Framework 4.7.2)
+- Internet connection for the map
 
-**Adımlar:**
-1. Depoyu indirin ve istediğiniz sürümün branch'ine geçin:
+**Steps:**
+1. Clone the repository and check out the latest version:
    ```
    git clone https://github.com/SalihAlici/MERGEN-KAT3-GCSS.git
    cd MERGEN-KAT3-GCSS
    git checkout QR
    ```
-2. `MERGEN-KAT3-GCSS.sln` dosyasını Visual Studio ile açın.
-3. NuGet paketlerini geri yükleyin: Solution'a sağ tık → *Restore NuGet Packages*. Paketler ilk derlemede otomatik de inebilir.
-4. Derleyip çalıştırın (F5).
-5. *Communication Modules* kısmından haberleşme modülünün portunu, *Motor Controller* kısmından anten motor sürücüsünün portunu seçip bağlanın. Portlar 9600 baud ile açılır.
-6. *ANTEN* sekmesinde yer istasyonu konumunu girin. Otomatik takip için *Start Tracking!*'e basın ya da yön düğmeleriyle anteni elle çevirin.
+2. Open `MERGEN-KAT3-GCSS.sln` in Visual Studio.
+3. Restore NuGet packages: right-click the solution → *Restore NuGet Packages* (they may also be restored on the first build).
+4. Build and run (F5).
+5. Select the communication module port under *Communication Modules* and the antenna motor controller port under *Motor Controller*, then connect. Ports open at 9600 baud.
+6. Enter the ground station position on the *ANTEN* tab. Press *Start Tracking!* for automatic tracking, or use the direction buttons to point the antenna manually.
 
-Telemetri kaydı masaüstündeki CSV dosyasına yazılır.
+Telemetry is logged to a CSV file on the desktop.
 
-## Kullanılan kütüphaneler
+## Libraries
 
-GMap.NET (harita), OpenTK (3B), System.Windows.Forms.DataVisualization (grafikler), System.Security.Cryptography (AES).
+GMap.NET (map), OpenTK (3D), System.Windows.Forms.DataVisualization (charts), System.Security.Cryptography (AES).
 
-## Geliştiren
+## Author
 
 [SalihAlici](https://github.com/SalihAlici)
